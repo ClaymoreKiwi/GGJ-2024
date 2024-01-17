@@ -72,11 +72,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(projectDir)externals/SDL2/include;$(projectDir)externals/SDL2_image/include;$(projectDir)externals/SDL2_ttf/include;$(projectDir)externals/SDL2_mixer/include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(projectDir)externals/SDL2/lib/x64;$(projectDir)externals/SDL2_image/lib/x64;$(projectDir)externals/SDL2_ttf/lib/x64;$(projectDir)externals/SDL2_mixer/include;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(projectDir)externals/SDL2/lib/x64;$(projectDir)externals/SDL2_image/lib/x64;$(projectDir)externals/SDL2_ttf/lib/x64;$(projectDir)externals/SDL2_mixer/lib/x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(projectDir)externals/SDL2/include;$(projectDir)externals/SDL2_image/include;$(projectDir)externals/SDL2_ttf/include;$(projectDir)externals/SDL2_mixer/include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(projectDir)externals/SDL2/lib/x64;$(projectDir)externals/SDL2_image/lib/x64;$(projectDir)externals/SDL2_ttf/lib/x64;$(projectDir)externals/SDL2_mixer/include;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(projectDir)externals/SDL2/lib/x64;$(projectDir)externals/SDL2_image/lib/x64;$(projectDir)externals/SDL2_ttf/lib/x64;$(projectDir)externals/SDL2_mixer/lib/x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
