@@ -1,6 +1,9 @@
-#include <iostream>
+#define SDL_MAIN_HANDLED
+#include "StateMachine.h"
 
 int main()
 {
-	std::cout << "Hello GGJ 2024" << std::endl;
+	StateMachine* StartGame = new StateMachine();
+	StartGame->updateState();
+	return 0;
 }
