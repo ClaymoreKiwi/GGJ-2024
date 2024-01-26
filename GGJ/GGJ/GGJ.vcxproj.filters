@@ -21,16 +21,10 @@
     <ClCompile Include="StateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Gameloop.cpp">
+    <ClCompile Include="MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="deltaTime.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TileMap.cpp">
+    <ClCompile Include="Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,16 +32,10 @@
     <ClInclude Include="StateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gameloop.h">
+    <ClInclude Include="MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="deltaTime.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TileMap.h">
+    <ClInclude Include="Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

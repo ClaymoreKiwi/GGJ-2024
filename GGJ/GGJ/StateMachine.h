@@ -4,6 +4,8 @@
 #include <SDL_image.h>
 #include "Gameloop.h"
 
+#include "MainMenu.h"
+
 class StateMachine
 {
 public:
