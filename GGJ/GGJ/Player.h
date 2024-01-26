@@ -30,6 +30,8 @@ public:
 	void swingClub(const int&, const int&);
 	//throwing the club at the enemy
 	void throwProjectile(const int&, const int&, const int&);
+
+	void Update();
 	//called once per frame
 	void draw();
 	//used for isolating the UI elements from other draw calls

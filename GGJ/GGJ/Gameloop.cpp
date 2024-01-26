@@ -50,12 +50,9 @@ bool Gameloop::processInput()
             g_state = 5;
             return false;
         }
-
-        //pass that key press to the players processing
-        player->processInput(e);
-        //default return to continue playing
-        return true;
     }
+        player->processInput(e);
+        return true;
 }
 
 void Gameloop::CameraUpdate()
@@ -81,6 +78,7 @@ void Gameloop::update()
 {
     Time->Update();
     draw();
+    player->Update();
     CameraUpdate();
     //(other class updates go here)
 }

@@ -113,6 +113,17 @@ void Player::throwProjectile(const int& mouseX, const int& mouseY, const int& am
 	}
 }
 
+void Player::Update()
+{
+	if (canMove)
+	{
+		p_previousPos.x = p_positionDest.x;
+		p_previousPos.y = p_positionDest.y;
+		p_previousPos.w = p_positionDest.w;
+		p_previousPos.h = p_positionDest.h;
+	}
+}
+
 void Player::swingClub(const int& mouseX, const int& mouseY)
 {
 	swings++;
