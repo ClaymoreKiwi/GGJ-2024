@@ -53,6 +53,20 @@ void StateMachine::updateState()
 		{
 		#pragma region Gameloop
 			//game loop goes here
+			Gameloop* game = new Gameloop(this->_renderer, _windowWidth, _windowHeight);
+			//init added to start application and init all game aspects
+			if (game->init() < 0)
+				game->gameRunning();
+			//game loop
+			while (game->gameRunning())
+			{
+				//run all updates
+				game->update();
+			}
+			state = game->gameStateUpdate();
+			//destroy all things and free memory before closing
+			delete game;
+			game = nullptr;
 		#pragma endregion
 		}
 		break;
