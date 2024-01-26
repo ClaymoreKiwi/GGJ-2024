@@ -45,19 +45,7 @@ void StateMachine::updateState()
 		case Menu:
 		{
 		#pragma region MainMenu loop
-			MainMenu* mainMenu = new MainMenu(this->_renderer, _windowWidth, _windowHeight);
-			if (mainMenu->init() < 0)
-				mainMenu->menuRunning();
-			//menu loop
-			while (mainMenu->menuRunning())
-			{
-				//run all updates
-				mainMenu->update();
-			}
-			state = mainMenu->menuStateUpdate();
-			//destroy menu
-			delete mainMenu;
-			mainMenu = nullptr;
+			//menu loop goes here
 		#pragma endregion
 		}
 		break;
@@ -65,6 +53,20 @@ void StateMachine::updateState()
 		{
 		#pragma region Gameloop
 			//game loop goes here
+			Gameloop* game = new Gameloop(this->_renderer, _windowWidth, _windowHeight);
+			//init added to start application and init all game aspects
+			if (game->init() < 0)
+				game->gameRunning();
+			//game loop
+			while (game->gameRunning())
+			{
+				//run all updates
+				game->update();
+			}
+			state = game->gameStateUpdate();
+			//destroy all things and free memory before closing
+			delete game;
+			game = nullptr;
 		#pragma endregion
 		}
 		break;
