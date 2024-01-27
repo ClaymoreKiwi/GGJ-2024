@@ -7,6 +7,7 @@ MainMenu::MainMenu(SDL_Renderer* r,const int& screenW, const int& screenH)
 
 int MainMenu::init()
 {
+	fontRenderer = std::unique_ptr<FontRendering>(new FontRendering(m_renderer, screenWidth, screenHeight));
 	//start game button
 	startGame = new Button(this->m_renderer, "content/buttons/buttons.png", screenWidth, screenHeight);
 	exitGame = new Button(this->m_renderer, "content/buttons/buttons.png", screenWidth, screenHeight);
@@ -26,7 +27,8 @@ void MainMenu::update()
 
 void MainMenu::draw()
 {
-	int green[4] = {16,74,21,255}; //specified green for the font
+	int white[4] = {255,255,255,255}; //specified green for the font
+	fontRenderer->draw("Entonox", screenWidth / 2, screenHeight / 4, 700, 200, white);
 	startGame->draw("Play", screenWidth / 2, screenHeight / 2);
 	exitGame->draw("Exit", screenWidth / 2, ((screenHeight / 2) + 100));
 }
