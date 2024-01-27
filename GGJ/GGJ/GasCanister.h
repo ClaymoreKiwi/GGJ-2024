@@ -22,6 +22,7 @@ public:
 	void init();
 	bool CreateTexture();
 	void Render();
-	void Update();
+	void OffsetObjectPositionUsingCameraPos();
+	void Update();;
 };
 
