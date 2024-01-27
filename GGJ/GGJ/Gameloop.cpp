@@ -1,6 +1,7 @@
 #include "Gameloop.h"
 #include "StateMachine.h"
 #include "Player.h"
+#include "GasCanister.h"
 
 Gameloop::Gameloop(SDL_Renderer* r, const int windowWidth, const int windowHeight)
     :g_renderer(r), windowWidth(windowWidth), windowHeight(windowHeight)
@@ -18,6 +19,7 @@ int Gameloop::init()
     //create a new player
     MakeCanisters();
     player = new Player(this->g_renderer, windowWidth, windowHeight, CameraC, Time, &this->gasCanisters);
+    GiveCanistersPlayerRef(player);
     //create tiled map - (this will be moved in the future to cater for map changing)
     g_tiledMap = std::shared_ptr<TileMap>(new TileMap(g_renderer, LoadMap(MapOne), player, windowWidth, windowHeight));
 
@@ -25,8 +27,18 @@ int Gameloop::init()
 }
 void Gameloop::MakeCanisters()
 {
-    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 200, 40));
-    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 500, 200));
+    int xLocations[] = {800, 100,600};
+    int yLocations[] = {550, 300, 300};
+    for (int i = 0; i < 3; ++i) {
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, xLocations[i], yLocations[i], i));
+    }
+}
+void Gameloop::GiveCanistersPlayerRef(Player* player)
+{
+    for(GasCanister* canister : this->gasCanisters)
+    {
+        canister->setPlayerRef(player);
+    }
 }
 //function to map select at a later date
 std::string Gameloop::LoadMap(const int mapNum)
@@ -72,6 +84,9 @@ void Gameloop::update()
     Time->Update();
     draw();
     player->Update();
+    for (GasCanister* canister : this->gasCanisters) {
+        canister->Update();
+    }
     //(other class updates go here)
 }
 

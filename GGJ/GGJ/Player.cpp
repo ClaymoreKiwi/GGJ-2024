@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "PlayerUI.h"
+#include "GasCanister.h"
 
 void Player::init()
 {
@@ -31,7 +32,7 @@ void Player::init()
 	//free the surface once the image is on screen
 	SDL_FreeSurface(p_surface);
 
-	playerUI = new PlayerUI(this->p_renderer, p_camera, screenWidth, screenHeight, &stamina);
+	playerUI = new PlayerUI(this->p_renderer, &p_camera->GetCamera(), screenWidth, screenHeight, &stamina);
 	this->audioPlayer = new AudioPlayer();
 }
 
@@ -176,12 +177,30 @@ void Player::Update()
 void Player::AahhhhThatsBetter()
 {
 	this->insanityAmount = this->insanityAmount + 50 > 100 ? 100 : this->insanityAmount + 50;
+	if (insanityAmount > 75)
+		GoSaneAgain();
 	std::cout << "canister collected" << std::endl;
+}
+void Player::GoSaneAgain()
+{
+	this->insane = false;
+	std::cout << "Sane again" << std::endl;
 }
 void Player::DecreaseSanity()
 {
 	this->insanityAmount -= 1;
-	std::cout << this->insanityAmount << std::endl;
+	if (this->insanityAmount < 75)
+	{
+		if (this->insane == false)
+			this->GoInsane();
+	}
+	//std::cout << this->insanityAmount << std::endl;
+}
+
+void Player::GoInsane()
+{
+	this->insane = true;
+	std::cout << "You have gone insane" << std::endl;
 }
 
 
@@ -202,7 +221,7 @@ bool Player::checkCollision(SDL_Rect other, GasCanister* canister)
 	
 	if (SDL_HasIntersection(&this->p_positionDest, &other) && canister->getIsFull()) {
 		canister->setIsFull(false);
-		this->audioPlayer->PlaySound(AudioPlayer::inhale);
+		this->audioPlayer->PlaySound(AudioPlayer::inhale, -1, 0);
 		return true;
 	}
 
