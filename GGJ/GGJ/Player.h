@@ -2,12 +2,13 @@
 #include <iostream>
 #include <memory>
 #include "Gameloop.h"
-#include "GasCanister.h"
+
 #include "Camera.h"
 #include <vector>
 #include "AudioPlayer.h"
 
 //class refrences
+class GasCanister;
 class PlayerUI;
 class deltaTime;
 
@@ -30,7 +31,9 @@ public:
 
 	void Update();
 	void AahhhhThatsBetter();
+	void GoSaneAgain();
 	void DecreaseSanity();
+	void GoInsane();
 	//called once per frame
 	void draw();
 	//used for isolating the UI elements from other draw calls
@@ -59,6 +62,7 @@ private:
 	AudioPlayer* audioPlayer;
 
 	float insanityAmount = 100;
+	bool insane = false;
 
 	std::vector<GasCanister*>* gasCanisters;
 	//int variables
