@@ -24,14 +24,14 @@ void Player::init()
 
 	//this is the destination rect that is used on the screen instead of the source
 	p_positionDest.x = 400;
-	p_positionDest.y = 0;
+	p_positionDest.y = 300;
 	p_positionDest.w = playerWidth * 2;
 	p_positionDest.h = playerHeight * 2;
 
 	//free the surface once the image is on screen
 	SDL_FreeSurface(p_surface);
 
-	playerUI = new PlayerUI(this->p_renderer, p_camera, screenWidth, screenHeight, &stamina, &swings)
+	//playerUI = new PlayerUI(this->p_renderer, p_camera, screenWidth, screenHeight, &stamina)
 }
 
 void Player::processInput(SDL_Event e)
@@ -105,10 +105,60 @@ void Player::Update()
 		//update movement bool
 		break;
 	case Door:
-		
+		if (!DoorTransition)
+		{
+			int distRight = screenWidth - p_drawRect.x;
+			int distBottom = screenHeight - p_drawRect.y;
+
+			int distances[4]= {distRight, p_drawRect.x, distBottom, p_drawRect.y};
+
+			int smallestDistance = 9999999;
+			char direction;
+			for (int i = 0; i < 4; ++i) {
+				if (distances[i] < smallestDistance) {
+					smallestDistance = distances[i];
+					switch (i) {
+					case 0:
+						direction = 'R';
+						break;
+					case 1:
+						direction = 'L';
+						break;
+					case 2:
+						direction = 'D';
+						break;
+					case 3:
+						direction = 'U';
+						break;
+					}
+				}
+			}
+
+			switch (direction) {
+			case 'R':
+				p_camera->UpdateCamera(1000, 0);
+				DoorTransition = true;
+				break;
+			case 'L':
+				p_camera->UpdateCamera(-1000, 0);
+				DoorTransition = true;
+				break;
+			case 'D':
+				p_camera->UpdateCamera(0, 600);
+				DoorTransition = true;
+				break;
+			case 'U':
+				p_camera->UpdateCamera(0, -600);
+				DoorTransition = true;
+				break;
+			}
+
+			
+		}
 		//update camera
 		break;
 	default:
+		DoorTransition = false;
 		//no special implementation
 		break;
 	}
@@ -122,8 +172,9 @@ void Player::Update()
 
 void Player::draw()
 {
+	p_drawRect = { p_positionDest.x - p_camera->GetCamera().x, p_positionDest.y - p_camera->GetCamera().y, p_positionDest.w, p_positionDest.h };
 	//draw player pos
-	SDL_RenderCopy(this->p_renderer, this->p_texture, &p_positionSrc, &p_positionDest);
+	SDL_RenderCopy(this->p_renderer, this->p_texture, &p_positionSrc, &p_drawRect);
 	drawUI();
 }
 

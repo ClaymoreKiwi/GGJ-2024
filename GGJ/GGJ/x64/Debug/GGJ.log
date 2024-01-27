@@ -1,9 +1,8 @@
-﻿  Gameloop.cpp
+﻿  Camera.cpp
+  Gameloop.cpp
   Main.cpp
   MainMenu.cpp
   Player.cpp
-C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\Player.cpp(138,3): warning C4150: deletion of pointer to incomplete type 'PlayerUI'; no destructor called
-C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\Player.h(10,7): message : see declaration of 'PlayerUI'
   StateMachine.cpp
   TileMap.cpp
   Generating Code...

@@ -47,37 +47,37 @@ void TileMap::loadMapFromFile(const char* filename)
 }
 
 
-void TileMap::draw(SDL_Rect camera)
+void TileMap::draw(Camera* camera)
 {
 	for (int i = 0; i < mapHeight; ++i)
 	{
 		for (int j = 0; j < mapWidth; ++j)
 		{
-			SDL_Rect sourceRect;
+			SDL_Rect sourceRect = {0,0,0,0};
 			sourceRect.x = (gameMap[i][j] % 4) * tm_tileSizeSrc;
 			sourceRect.y = (gameMap[i][j] / 4) * tm_tileSizeSrc;
 			sourceRect.h = tm_tileSizeSrc;
 			sourceRect.w = tm_tileSizeSrc;
 
-			SDL_Rect DestRect;
-			DestRect.x = (j * tm_tileWidth) - camera.x;
-			DestRect.y = (i * tm_tileHeight) - camera.y;
+			SDL_Rect DestRect = {0,0,0,0};
+			DestRect.x = (j * tm_tileWidth) - camera->GetCamera().x;
+			DestRect.y = (i * tm_tileHeight) - camera->GetCamera().y;
 			DestRect.w = tm_tileWidth;
 			DestRect.h = tm_tileHeight;
 
 			SDL_RenderCopy(this->tm_renderer, this->tm_texture, &sourceRect, &DestRect);
 			CheckTileCollision(DestRect, &player->p_positionDest, gameMap[i][j], camera);
-			if (gameMap[i][j] == 3)
+			if (gameMap[i][j] == 1)
 			{
-
+				
 			}
 		}
 	}
 }
 
-bool TileMap::CheckTileCollision(SDL_Rect tileRect, SDL_Rect* playerRect, const int& tile, SDL_Rect camera)
+bool TileMap::CheckTileCollision(SDL_Rect tileRect, SDL_Rect* playerRect, const int& tile, Camera* camera)
 {
-	t_drawDest = { playerRect->x - camera.x, playerRect->y - camera.y, playerRect->w, playerRect->h };
+	t_drawDest = { playerRect->x - camera->GetCamera().x, playerRect->y - camera->GetCamera().y, playerRect->w, playerRect->h };
 	// store the sides of the Rect
 	int leftTile, leftPlayer;
 	int rightTile, rightPlayer;
@@ -94,7 +94,7 @@ bool TileMap::CheckTileCollision(SDL_Rect tileRect, SDL_Rect* playerRect, const 
 	leftPlayer = t_drawDest.x;
 	rightPlayer = t_drawDest.x + t_drawDest.w;
 	//we want the area around the feet
-	topPlayer = static_cast<int>((playerRect->y + (playerRect->h * 0.75f)) - camera.y);
+	topPlayer = static_cast<int>((playerRect->y + (playerRect->h * 0.5f)) - camera->GetCamera().y);
 	bottomPlayer = t_drawDest.y + t_drawDest.h;
 
 
@@ -110,6 +110,7 @@ bool TileMap::CheckTileCollision(SDL_Rect tileRect, SDL_Rect* playerRect, const 
 		return true;
 	case Door:
 		player->SetTerrainCheck(Door);
+		std::cerr << "you are on a door bro" << std::endl;
 		return true;
 	default:
 		player->SetTerrainCheck(0);

@@ -8,12 +8,17 @@ Gameloop::Gameloop(SDL_Renderer* r, const int windowWidth, const int windowHeigh
 
 int Gameloop::init()
 {
-    CameraC = new CameraC();
+    //crt effect
+    SDL_Surface* image = IMG_Load("content/background/CRT.png");
+    g_textureCRT = SDL_CreateTextureFromSurface(g_renderer, image);
+    SDL_FreeSurface(image);
+
+    CameraC = new Camera(camera);
     Time = new deltaTime();
     //create a new player
     this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 200, 200));
     this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 300, 200));
-    player = new Player(this->g_renderer, windowWidth, windowHeight, &camera, Time, &this->gasCanisters);
+    player = new Player(this->g_renderer, windowWidth, windowHeight, CameraC, Time, &this->gasCanisters);
     //create tiled map - (this will be moved in the future to cater for map changing)
     g_tiledMap = std::shared_ptr<TileMap>(new TileMap(g_renderer, LoadMap(MapOne), player, windowWidth, windowHeight));
 
@@ -58,19 +63,11 @@ bool Gameloop::processInput()
         return true;
 }
 
-void Gameloop::CameraUpdate()
-{
-    std::cerr << "cam X: " << camera.x << std::endl;
-    std::cerr << "cam y: " << camera.y << std::endl;
-    //update based on player collision event
-}
-
 void Gameloop::update()
 {
     Time->Update();
     draw();
     player->Update();
-    CameraUpdate();
     //(other class updates go here)
 }
 
@@ -80,11 +77,12 @@ void Gameloop::draw()
     SDL_RenderClear(g_renderer);
     //Draw routines go here
     SDL_Delay(80);
-    g_tiledMap->draw(camera);
+    g_tiledMap->draw(CameraC);
     for (GasCanister* canister : this->gasCanisters) {
         canister->Render();
     }
     player->draw();
+    SDL_RenderCopy(this->g_renderer, this->g_textureCRT, NULL, NULL);
     //render the new frames that happened since the last call
     SDL_RenderPresent(g_renderer);
 }
