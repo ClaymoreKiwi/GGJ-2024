@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include "AudioPlayer.h"
 
 #include "./deltaTime.h"
 class GasCanister
@@ -13,6 +14,7 @@ class GasCanister
 	SDL_Rect destRect = {200, 200, 25, 75};
 	SDL_Rect drawRect = { 0,0,0,0 };
 	bool isFull = true;
+	AudioPlayer* audioPlayer;
 
 public:
 	GasCanister(SDL_Renderer* r, const int& screenW, const int& screenH, SDL_Rect* camera, deltaTime* Time, int posX, int posY)
@@ -20,6 +22,7 @@ public:
 		this->init();
 		this->destRect.x = posX;
 		this->destRect.y = posY;
+		this->audioPlayer = new AudioPlayer();
 	};
 
 	void init();

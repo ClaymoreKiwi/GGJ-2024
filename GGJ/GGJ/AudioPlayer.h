@@ -30,6 +30,7 @@ private:
 public:
 	enum Sounds 
 	{
-		inhale
+		inhale,
+		hiss
 	};
 };

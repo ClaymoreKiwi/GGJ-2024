@@ -5,6 +5,8 @@ void GasCanister::init()
 	bool textureCreatedSucessfully = CreateTexture();
 	if (!textureCreatedSucessfully)
 		return;
+	this->audioPlayer = new AudioPlayer();
+	//this->audioPlayer->PlaySound(1);
 }
 
 bool GasCanister::CreateTexture()
