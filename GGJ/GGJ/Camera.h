@@ -33,7 +33,7 @@ public:
 		if (cam_camera.y > ((600 / 10) * 20) - 600)
 			cam_camera.y = ((600 / 10) * 20) - 600;
 	};
-	SDL_Rect GetCamera()
+	SDL_Rect& GetCamera()
 	{
 		return cam_camera;
 	}

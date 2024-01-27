@@ -6,7 +6,8 @@ void GasCanister::init()
 	if (!textureCreatedSucessfully)
 		return;
 	this->audioPlayer = new AudioPlayer();
-	//this->audioPlayer->PlaySound(1);
+	this->audioPlayer->PlaySound(AudioPlayer::hiss, this->audioChannel, -1);
+	this->audioPlayer->SetVolume(this->audioChannel, 10);
 }
 
 bool GasCanister::CreateTexture()
@@ -41,17 +42,30 @@ void GasCanister::OffsetObjectPositionUsingCameraPos()
 
 void GasCanister::Update()
 {
+	float distanceToPlayerX = this->player->p_positionDest.x - this->destRect.x;
+	float distanceToPlayerY = this->player->p_positionDest.y - this->destRect.y;
 
+	float distanceSquared = (distanceToPlayerX * distanceToPlayerX) + (distanceToPlayerY * distanceToPlayerY);
+
+	this->audioPlayer->SetVolume(this->audioChannel, 1 / (distanceSquared / 1000000));
+	//std::cout << 1 / (distanceSquared / 1000000) << std::endl;
 }
 
 void GasCanister::setIsFull(bool value)
 {
 	this->isFull = value;
+	if (value == false)
+		this->audioPlayer->Stop(this->audioChannel);
 }
 
 bool GasCanister::getIsFull()
 {
 	return this->isFull;
+}
+
+void GasCanister::setPlayerRef(Player* player)
+{
+	this->player = player;
 }
 
 SDL_Rect GasCanister::GetCanisterRect()

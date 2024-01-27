@@ -5,17 +5,17 @@
 #include <SDL_image.h>
 #include "deltaTime.h"
 #include "TileMap.h"
-#include "GasCanister.h"
 #include "Camera.h"
 
 class Player;
-
+class GasCanister;
 class Gameloop
 {
 public:
 	Gameloop(SDL_Renderer*, const int, const int);
 	int init();
 	void MakeCanisters();
+	void GiveCanistersPlayerRef(Player* player);
 	std::string LoadMap(const int);
 	void update();
 	void draw();

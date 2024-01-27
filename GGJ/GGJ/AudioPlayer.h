@@ -2,6 +2,7 @@
 #include <SDL_mixer.h>
 #include <sstream>
 #include <vector>
+#include <SDL.h>
 
 class AudioPlayer
 {
@@ -20,8 +21,10 @@ public:
 		Mix_CloseAudio();
 	}
 
-	void PlaySound(int sound);
+	void PlaySound(int sound, int audioChannel, int looping);
 	void TrackSelect(const char* path);
+	void Stop(int channel);
+	void SetVolume(int channel, float volume);
 
 private:
 	Mix_Music* musicPlayer = nullptr;

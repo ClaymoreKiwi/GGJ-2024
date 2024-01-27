@@ -20,9 +20,16 @@ AudioPlayer::AudioPlayer()
 	}
 }
 
-void AudioPlayer::PlaySound(int sound)
+void AudioPlayer::PlaySound(int sound, int audioChannel, int looping)
 {
-	Mix_PlayChannel(-1, soundFiles[sound], 0);
+	int channelGroup = audioChannel;
+	if (sound == inhale) {
+		channelGroup = Mix_GroupAvailable(-1);
+		Mix_Volume(channelGroup, 50);
+		Mix_PlayChannel(channelGroup, soundFiles[sound], looping);
+		return;
+	}
+	Mix_PlayChannel(audioChannel, soundFiles[sound], looping);
 }
 
 void AudioPlayer::TrackSelect(const char* path)
@@ -40,4 +47,14 @@ void AudioPlayer::TrackSelect(const char* path)
 	}
 	Mix_VolumeMusic(15);
 	Mix_PlayMusic(musicPlayer, -1);
+}
+
+void AudioPlayer::Stop(int channel)
+{
+	Mix_HaltChannel(channel);
+}
+
+void AudioPlayer::SetVolume(int channel, float volume)
+{
+	Mix_Volume(channel, volume);
 }
