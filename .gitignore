@@ -3,6 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+.vs
 # User-specific files
 *.rsuser
 *.suo
@@ -386,3 +387,11 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+*.vsidx
+*.vsidx
+*.vsidx
+*.vsidx
+*.vsidx
+GGJ/.vs/GGJ/v17/.suo
+*.db
+*.ipch
