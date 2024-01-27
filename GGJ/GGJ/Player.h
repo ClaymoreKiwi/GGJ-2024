@@ -84,7 +84,6 @@ public:
 		movingLeft = false,
 		movingRight = false,
 		usingStamina = false,
-		hasThrownClub = false,
 		enemyIntersect = false,
 		DoorTransition = false;
 
