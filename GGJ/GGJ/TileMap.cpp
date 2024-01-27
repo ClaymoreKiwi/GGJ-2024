@@ -105,12 +105,10 @@ bool TileMap::CheckTileCollision(SDL_Rect tileRect, SDL_Rect* playerRect, const 
 	switch (tile)
 	{
 	case Wall:
-
 		player->SetTerrainCheck(Wall);
 		return true;
 	case Door:
 		player->SetTerrainCheck(Door);
-		std::cerr << "you are on a door bro" << std::endl;
 		return true;
 	default:
 		player->SetTerrainCheck(0);

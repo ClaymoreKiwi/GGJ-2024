@@ -8,9 +8,6 @@
 #include "AudioPlayer.h"
 
 //class refrences
-class GolfClub;
-class GolfBall;
-class BallAmmo;
 class PlayerUI;
 class deltaTime;
 
@@ -55,8 +52,6 @@ private:
 	SDL_Surface* p_surface = nullptr; // surface to brin ghte image in and add it as a texture to the rect
 	Camera* p_camera = nullptr;
 	PlayerUI* playerUI = nullptr;
-	GolfClub* playerClub = nullptr;
-	GolfBall* golfBall = nullptr;
 	deltaTime* Time = nullptr;
 	SDL_Rect	  p_positionSrc = { 0,0,0,0 }; //source rect for the player
 	SDL_Rect	  p_previousPos = { 0,0,0,0 };
@@ -85,7 +80,6 @@ public:
 		movingLeft = false,
 		movingRight = false,
 		usingStamina = false,
-		hasThrownClub = false,
 		enemyIntersect = false,
 		DoorTransition = false;
 
