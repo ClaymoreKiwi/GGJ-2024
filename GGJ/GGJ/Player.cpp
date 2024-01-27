@@ -46,6 +46,7 @@ void Player::directionalMovement()
 	bool bottomCollision = (p_positionDest.y + p_positionDest.h) < (screenHeight / 10) * mapHeight;
 	bool rightCollison = (p_positionDest.x + p_positionDest.w) < (screenWidth / 10) * mapWidth;
 	bool leftCollison = p_positionDest.x > 0;
+
 	//move the character up the screen and set relevant animation frames
 	if (movingUp && topCollision)
 	{
@@ -95,35 +96,21 @@ void Player::directionalMovement()
 }
 
 
-void Player::throwProjectile(const int& mouseX, const int& mouseY, const int& ammoType)
-{
-	if (ammoType == club)
-	{
-		if (hasThrownClub)
-		{
-			std::cerr << "No club to throw\n";
-			return;
-		}
-		hasThrownClub = true;
-	}
-	else if (ammoType == ball)
-	{
-		if (ballCount == 0)
-		{
-			std::cerr << "No ball to throw\n";
-			return;
-		}
-	}
-}
-
 void Player::Update()
 {
-	if (canMove)
+
+	switch (terrainCheck)
 	{
-		p_previousPos.x = p_positionDest.x;
-		p_previousPos.y = p_positionDest.y;
-		p_previousPos.w = p_positionDest.w;
-		p_previousPos.h = p_positionDest.h;
+	case Wall:
+		//update movement bool
+		break;
+	case Door:
+		
+		//update camera
+		break;
+	default:
+		//no special implementation
+		break;
 	}
 
 	for (GasCanister* canister : *this->gasCanisters) {
@@ -132,15 +119,11 @@ void Player::Update()
 	}
 }
 
-void Player::swingClub(const int& mouseX, const int& mouseY)
-{
-	swings++;
-}
 
 void Player::draw()
 {
-	p_drawDest = { p_positionDest.x - p_camera->x, p_positionDest.y - p_camera->y, p_positionDest.w, p_positionDest.h };
-	SDL_RenderCopy(this->p_renderer, this->p_texture, &p_positionSrc, &p_drawDest);
+	//draw player pos
+	SDL_RenderCopy(this->p_renderer, this->p_texture, &p_positionSrc, &p_positionDest);
 	drawUI();
 }
 

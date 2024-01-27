@@ -28,10 +28,6 @@ public:
 	//called once per frame
 	//used for all the directional movement
 	void directionalMovement();
-	//player swinging club to interact with the ball
-	void swingClub(const int&, const int&);
-	//throwing the club at the enemy
-	void throwProjectile(const int&, const int&, const int&);
 
 	void Update();
 	//called once per frame
@@ -43,23 +39,9 @@ public:
 	//garbage collection
 	void clean();
 
-	SDL_Rect* GetGolfClub();
-	void SetGolfClubState();
-	GolfClub* GetClub()
-	{
-		return playerClub;
-	}
 	void SetTerrainCheck(int val)
 	{
 		terrainCheck = val;
-	}
-	void SetSwings()
-	{
-		swings++;
-	}
-	int GetSwings()
-	{
-		return swings;
 	}
 
 private:
@@ -73,7 +55,6 @@ private:
 	GolfBall* golfBall = nullptr;
 	deltaTime* Time = nullptr;
 	SDL_Rect	  p_positionSrc = { 0,0,0,0 }; //source rect for the player
-	SDL_Rect	  p_drawDest = { 0,0,0,0 }; // destination rect for the player position based on the camera
 	SDL_Rect	  p_previousPos = { 0,0,0,0 };
 
 	float insanityAmount;
@@ -89,15 +70,7 @@ private:
 	int ballCount = 3,
 		speed = 20,
 		stamina = 100,
-		swings = 0,
-		strokePower = 0,
 		terrainCheck = 0;
-
-	enum clubOrBall
-	{
-		club = 0,
-		ball,
-	};
 
 public:
 	//movement flags bool
@@ -108,7 +81,10 @@ public:
 		usingStamina = false,
 		hasThrownClub = false,
 		enemyIntersect = false,
-		canMove = true;
+		canMoveRight = true,
+		canMoveLeft = true,
+		canMoveUp = true,
+		canMoveDown = true;
 
 	std::vector<BallAmmo*> AmmoTotal;
 	SDL_Rect p_positionDest = { 0,0,0,0 }; //destination of the player sprite on the screen

@@ -5,7 +5,7 @@
 #include <fstream>
 
 class Player;
-const int mapWidth = 7, mapHeight = 7;
+const int mapWidth = 40, mapHeight = 20;
 struct Circle_Col
 {
 	int x, y;
@@ -50,9 +50,7 @@ public:
 
 enum terrain
 {
-	SAND = 4,
-	HIGHGRASS = 5,
-	WATER = 6,
-	FLAG = 7,
+	Door = 1,
+	Wall = 2,
 };
 

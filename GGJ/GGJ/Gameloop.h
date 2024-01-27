@@ -6,6 +6,7 @@
 #include "deltaTime.h"
 #include "TileMap.h"
 #include "GasCanister.h"
+#include "Camera.h"
 
 class Player;
 
@@ -32,6 +33,9 @@ private:
 	//for creating the window and the renderer for whatever is on screen
 	SDL_Renderer* g_renderer = nullptr;
 	Player* player = nullptr;
+
+	//dont worry about this camera 
+	Camera* CameraC = nullptr;
 
 	deltaTime* Time = nullptr;
 	std::shared_ptr<TileMap> g_tiledMap;

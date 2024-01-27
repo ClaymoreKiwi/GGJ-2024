@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="deltaTime.cpp" />
     <ClCompile Include="FontRendering.cpp" />
     <ClCompile Include="Gameloop.cpp" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="deltaTime.h" />
     <ClInclude Include="FontRendering.h" />
     <ClInclude Include="Gameloop.h" />

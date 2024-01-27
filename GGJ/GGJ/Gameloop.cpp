@@ -1,6 +1,6 @@
 #include "Gameloop.h"
 #include "StateMachine.h"
-#include"Player.h"
+#include "Player.h"
 
 Gameloop::Gameloop(SDL_Renderer* r, const int windowWidth, const int windowHeight)
     :g_renderer(r), windowWidth(windowWidth), windowHeight(windowHeight)
@@ -8,6 +8,7 @@ Gameloop::Gameloop(SDL_Renderer* r, const int windowWidth, const int windowHeigh
 
 int Gameloop::init()
 {
+    CameraC = new CameraC();
     Time = new deltaTime();
     //create a new player
     this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 200, 200));
@@ -15,7 +16,6 @@ int Gameloop::init()
     player = new Player(this->g_renderer, windowWidth, windowHeight, &camera, Time, &this->gasCanisters);
     //create tiled map - (this will be moved in the future to cater for map changing)
     g_tiledMap = std::shared_ptr<TileMap>(new TileMap(g_renderer, LoadMap(MapOne), player, windowWidth, windowHeight));
-
 
     return 0;
 }
@@ -60,21 +60,9 @@ bool Gameloop::processInput()
 
 void Gameloop::CameraUpdate()
 {
-    camera.x = player->p_positionDest.x - (windowWidth / 2);
-    camera.y = player->p_positionDest.y - (windowHeight / 2);
-
-    //stop camera from going too far left
-    if (camera.x < 0)
-        camera.x = 0;
-    //stop camera from going too far up
-    if (camera.y < 0)
-        camera.y = 0;
-    //stop camera from going too far right
-    if (camera.x > ((windowWidth / 10) * mapWidth) - windowWidth)
-        camera.x = ((windowWidth / 10) * mapWidth) - windowWidth;
-    //stop camera from going too far down
-    if (camera.y > ((windowHeight / 10) * mapHeight) - windowHeight)
-        camera.y = ((windowHeight / 10) * mapHeight) - windowHeight;
+    std::cerr << "cam X: " << camera.x << std::endl;
+    std::cerr << "cam y: " << camera.y << std::endl;
+    //update based on player collision event
 }
 
 void Gameloop::update()
