@@ -14,9 +14,11 @@ class GasCanister
 	SDL_Rect drawRect = { 0,0,0,0 };
 
 public:
-	GasCanister(SDL_Renderer* r, const int& screenW, const int& screenH, SDL_Rect* camera, deltaTime* Time)
+	GasCanister(SDL_Renderer* r, const int& screenW, const int& screenH, SDL_Rect* camera, deltaTime* Time, int posX, int posY)
 		:renderer(r), camera(camera), time(Time) {
 		this->init();
+		this->destRect.x = posX;
+		this->destRect.y = posY;
 	};
 
 	void init();
@@ -24,5 +26,7 @@ public:
 	void Render();
 	void OffsetObjectPositionUsingCameraPos();
 	void Update();;
+
+	SDL_Rect GetCanisterRect();
 };
 

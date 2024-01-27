@@ -10,11 +10,12 @@ int Gameloop::init()
 {
     Time = new deltaTime();
     //create a new player
-    player = new Player(this->g_renderer, windowWidth, windowHeight, &camera, Time);
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 200, 200));
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 300, 200));
+    player = new Player(this->g_renderer, windowWidth, windowHeight, &camera, Time, &this->gasCanisters);
     //create tiled map - (this will be moved in the future to cater for map changing)
     g_tiledMap = std::shared_ptr<TileMap>(new TileMap(g_renderer, LoadMap(MapOne), player, windowWidth, windowHeight));
 
-    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time));
 
     return 0;
 }

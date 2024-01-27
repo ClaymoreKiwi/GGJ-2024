@@ -40,3 +40,8 @@ void GasCanister::Update()
 {
 
 }
+
+SDL_Rect GasCanister::GetCanisterRect()
+{
+	return this->destRect;
+}
