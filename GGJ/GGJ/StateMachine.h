@@ -22,12 +22,12 @@ private:
 		Exit = 5
 	};
 
-	int state = Menu;
+	int state = GamePlay;
 
 	SDL_Window*		_window = nullptr;
 	SDL_Renderer*	_renderer = nullptr;
 
-	const int	    _windowWidth = 800,
-					_windowHeight = 800;
+	const int	    _windowWidth = 1000,
+					_windowHeight = 600;
 };
 

@@ -13,7 +13,7 @@ int TileMap::init(std::string fileName)
 	SDL_Surface* image = IMG_Load(tm_fileName.c_str());
 	tm_texture = SDL_CreateTextureFromSurface(tm_renderer, image);
 	SDL_FreeSurface(image);
-	tm_tileWidth /= 10;
+	tm_tileWidth /= 15;
 	tm_tileHeight /= 10;
 
 	return 0;
@@ -67,8 +67,9 @@ void TileMap::draw(SDL_Rect camera)
 
 			SDL_RenderCopy(this->tm_renderer, this->tm_texture, &sourceRect, &DestRect);
 			CheckTileCollision(DestRect, &player->p_positionDest, gameMap[i][j], camera);
-			if (gameMap[i][j] == 7)
+			if (gameMap[i][j] == 3)
 			{
+
 			}
 		}
 	}
@@ -103,18 +104,12 @@ bool TileMap::CheckTileCollision(SDL_Rect tileRect, SDL_Rect* playerRect, const 
 	}
 	switch (tile)
 	{
-	case SAND:
+	case Wall:
 
-		player->SetTerrainCheck(SAND);
+		player->SetTerrainCheck(Wall);
 		return true;
-	case HIGHGRASS:
-		player->SetTerrainCheck(HIGHGRASS);
-		return true;
-	case WATER:
-		player->canMove = false;
-		player->SetTerrainCheck(WATER);
-		return true;
-	case FLAG:
+	case Door:
+		player->SetTerrainCheck(Door);
 		return true;
 	default:
 		player->SetTerrainCheck(0);
