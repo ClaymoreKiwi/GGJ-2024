@@ -19,7 +19,6 @@ public:
 	void update();
 	void draw();
 	bool processInput();
-	void CameraUpdate();
 	bool gameRunning();
 	int gameStateUpdate();
 	void clean();
@@ -32,6 +31,7 @@ private:
 	std::vector<GasCanister*> gasCanisters;
 	//for creating the window and the renderer for whatever is on screen
 	SDL_Renderer* g_renderer = nullptr;
+	SDL_Texture* g_textureCRT = nullptr;
 	Player* player = nullptr;
 
 	//dont worry about this camera 

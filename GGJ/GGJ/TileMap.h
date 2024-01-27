@@ -4,6 +4,8 @@
 #include <string>
 #include <fstream>
 
+#include "Camera.h"
+
 class Player;
 const int mapWidth = 40, mapHeight = 20;
 struct Circle_Col
@@ -18,9 +20,9 @@ public:
 	TileMap(SDL_Renderer* r, std::string fileName, Player* player, const int screenWidth, const int screenHeight);
 
 	int init(std::string);
-	void draw(SDL_Rect Camera);
+	void draw(Camera* Camera);
 	void loadMapFromFile(const char* filename);
-	bool CheckTileCollision(SDL_Rect tile, SDL_Rect* player, const int&, SDL_Rect camera);
+	bool CheckTileCollision(SDL_Rect tile, SDL_Rect* player, const int&, Camera* camera);
 	void UpdateMap(std::string mapName);
 	~TileMap()
 	{
