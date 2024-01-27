@@ -3,6 +3,7 @@
 #include <memory>
 #include "Gameloop.h"
 #include "GasCanister.h"
+#include "Camera.h"
 #include <vector>
 #include "AudioPlayer.h"
 
@@ -17,7 +18,7 @@ class Player
 {
 public:
 	//player constructor and initalised variables
-	Player(SDL_Renderer* r, const int& screenW, const int& screenH, SDL_Rect* camera, deltaTime* Time, std::vector<GasCanister*>* canisters)
+	Player(SDL_Renderer* r, const int& screenW, const int& screenH, Camera* camera, deltaTime* Time, std::vector<GasCanister*>* canisters)
 		:p_renderer(r), screenWidth(screenW), screenHeight(screenH), p_camera(camera), Time(Time), gasCanisters(canisters)
 	{
 		init();
@@ -52,13 +53,14 @@ private:
 	SDL_Texture* p_texture = nullptr; //players sprite
 	SDL_Renderer* p_renderer = nullptr; //rendering capable from this class
 	SDL_Surface* p_surface = nullptr; // surface to brin ghte image in and add it as a texture to the rect
-	SDL_Rect* p_camera = nullptr; //camera refrence from gameloop
+	Camera* p_camera = nullptr;
 	PlayerUI* playerUI = nullptr;
 	GolfClub* playerClub = nullptr;
 	GolfBall* golfBall = nullptr;
 	deltaTime* Time = nullptr;
 	SDL_Rect	  p_positionSrc = { 0,0,0,0 }; //source rect for the player
 	SDL_Rect	  p_previousPos = { 0,0,0,0 };
+	SDL_Rect p_drawRect = { 0,0,0,0 };
 	AudioPlayer* audioPlayer;
 
 	float insanityAmount = 100;
@@ -85,12 +87,8 @@ public:
 		usingStamina = false,
 		hasThrownClub = false,
 		enemyIntersect = false,
-		canMoveRight = true,
-		canMoveLeft = true,
-		canMoveUp = true,
-		canMoveDown = true;
+		DoorTransition = false;
 
-	std::vector<BallAmmo*> AmmoTotal;
 	SDL_Rect p_positionDest = { 0,0,0,0 }; //destination of the player sprite on the screen
 };
 
