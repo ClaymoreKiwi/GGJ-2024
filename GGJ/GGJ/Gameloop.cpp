@@ -14,6 +14,8 @@ int Gameloop::init()
     //create tiled map - (this will be moved in the future to cater for map changing)
     g_tiledMap = std::shared_ptr<TileMap>(new TileMap(g_renderer, LoadMap(MapOne), player, windowWidth, windowHeight));
 
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time));
+
     return 0;
 }
 //function to map select at a later date
@@ -87,10 +89,12 @@ void Gameloop::draw()
 {
     //clear the render before drawing the next frame
     SDL_RenderClear(g_renderer);
-
     //Draw routines go here
     SDL_Delay(80);
     g_tiledMap->draw(camera);
+    for (GasCanister* canister : this->gasCanisters) {
+        canister->Render();
+    }
     player->draw();
     //render the new frames that happened since the last call
     SDL_RenderPresent(g_renderer);

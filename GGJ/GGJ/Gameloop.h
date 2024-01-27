@@ -5,6 +5,7 @@
 #include <SDL_image.h>
 #include "deltaTime.h"
 #include "TileMap.h"
+#include "GasCanister.h"
 
 class Player;
 
@@ -27,6 +28,7 @@ public:
 	}
 
 private:
+	std::vector<GasCanister*> gasCanisters;
 	//for creating the window and the renderer for whatever is on screen
 	SDL_Renderer* g_renderer = nullptr;
 	Player* player = nullptr;
