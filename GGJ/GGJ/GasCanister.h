@@ -10,7 +10,7 @@ class GasCanister
 	SDL_Texture* texture = nullptr;
 	SDL_Rect* camera = nullptr;
 	deltaTime* time = nullptr;
-	SDL_Rect destRect = {200, 200, 30, 45};
+	SDL_Rect destRect = {200, 200, 75, 25};
 	SDL_Rect drawRect = { 0,0,0,0 };
 
 public:

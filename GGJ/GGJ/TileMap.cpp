@@ -13,8 +13,8 @@ int TileMap::init(std::string fileName)
 	SDL_Surface* image = IMG_Load(tm_fileName.c_str());
 	tm_texture = SDL_CreateTextureFromSurface(tm_renderer, image);
 	SDL_FreeSurface(image);
-	tm_tileWidth /= 5;
-	tm_tileHeight /= 5;
+	tm_tileWidth /= 10;
+	tm_tileHeight /= 10;
 
 	return 0;
 }

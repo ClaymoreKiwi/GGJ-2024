@@ -9,7 +9,7 @@ void GasCanister::init()
 
 bool GasCanister::CreateTexture()
 {
-	SDL_Surface* canisterSurface = IMG_Load("content/background/background_sheet.png");
+	SDL_Surface* canisterSurface = IMG_Load("content/objects/entonox_can.png");
 	if (canisterSurface == NULL)
 	{
 		//if image could not be initalised throw error and stop program
