@@ -5,7 +5,7 @@
 #include <SDL_ttf.h>
 //#include "AudioPlayer.h"
 #include "Button.h"
-//#include "FontRendering.h"
+#include "FontRendering.h"
 //#include "Background.h"
 
 class MainMenu
@@ -38,7 +38,7 @@ private:
 	//
 	//Background* background = nullptr;
 	//
-	//std::unique_ptr<FontRendering> fontRenderer;
+	std::unique_ptr<FontRendering> fontRenderer;
 	//
 	const int screenWidth = 0, screenHeight = 0;
 
