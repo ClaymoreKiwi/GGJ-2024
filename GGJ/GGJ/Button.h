@@ -2,7 +2,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <SDL_image.h>
-//#include "FontRendering.h"
+#include "FontRendering.h"
 //#include "AudioPlayer.h"
 
 class Button
@@ -27,6 +27,8 @@ private: // variables
 	SDL_Rect	  btn_positionSrc = { 0,0,0,0 }; //source rect for the player
 	SDL_Rect	  btn_positionDest = { 0,0,0,0 }; //destination on that source to be viewed
 	SDL_Surface* btn_surface = nullptr;
+
+	std::unique_ptr<FontRendering> fontRenderer;
 
 	std::string btn_filePath = nullptr; //button image location
 

@@ -30,7 +30,7 @@ int Button::init()
 
 	SDL_FreeSurface(btn_surface);
 
-	//fontRenderer = std::unique_ptr<FontRendering>(new FontRendering(btn_renderer, btn_positionDest.x, btn_positionDest.y));
+	fontRenderer = std::unique_ptr<FontRendering>(new FontRendering(btn_renderer, btn_positionDest.x, btn_positionDest.y));
 
 	//audioPlayer = new AudioPlayer();
 	return 0;
@@ -96,9 +96,12 @@ void Button::draw(std::string text, const int& posX, const int& posY)
 		SDL_RenderCopy(this->btn_renderer, this->btn_texture, &btn_positionSrc, &btn_positionDest);
 	}
 
+	int black[4] = { 0,0,0,255 };
+	fontRenderer->draw(text, posX, posY, 90, 40, black);
 }
 
 void Button::clean()
 {
+	fontRenderer->clean();
 	SDL_DestroyTexture(btn_texture);
 }

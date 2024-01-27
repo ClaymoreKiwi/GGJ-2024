@@ -5,7 +5,7 @@
 #include <fstream>
 
 class Player;
-const int mapWidth = 40, mapHeight = 20;
+const int mapWidth = 7, mapHeight = 7;
 struct Circle_Col
 {
 	int x, y;
@@ -32,7 +32,7 @@ public:
 
 private:
 	SDL_Renderer* tm_renderer;
-	const std::string tm_fileName = "content/background/background_sheet.png";
+	const std::string tm_fileName = "content/background/TileMapGGJ.png";
 	std::string		  tm_mapName;
 	SDL_Texture* tm_texture;
 	Player* player = nullptr;
