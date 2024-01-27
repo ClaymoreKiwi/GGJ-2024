@@ -22,7 +22,7 @@ void Player::init()
 	p_positionSrc.h = playerHeight;
 
 	//this is the destination rect that is used on the screen instead of the source
-	p_positionDest.x = 0;
+	p_positionDest.x = 400;
 	p_positionDest.y = 0;
 	p_positionDest.w = playerWidth * 2;
 	p_positionDest.h = playerHeight * 2;
