@@ -144,11 +144,11 @@ void Player::Update()
 				DoorTransition = true;
 				break;
 			case 'D':
-				p_camera->UpdateCamera(0, 1000);
+				p_camera->UpdateCamera(0, 600);
 				DoorTransition = true;
 				break;
 			case 'U':
-				p_camera->UpdateCamera(0, -1000);
+				p_camera->UpdateCamera(0, -600);
 				DoorTransition = true;
 				break;
 			}

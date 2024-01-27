@@ -12,6 +12,19 @@ public:
 	{
 		cam_camera.x += x;
 		cam_camera.y += y;
+
+		//stop camera from going too far left
+		if (cam_camera.x < 0)
+			cam_camera.x = 0;
+		//stop camera from going too far up
+		if (cam_camera.y < 0)
+			cam_camera.y = 0;
+		//stop camera from going too far right
+		if (cam_camera.x > ((1000 / 10) * 40) - 1000)
+			cam_camera.x = ((1000 / 10) * 40) - 1000;
+		//stop camera from going too far down
+		if (cam_camera.y > ((600 / 10) * 20) - 600)
+			cam_camera.y = ((600 / 10) * 20) - 600;
 	};
 	SDL_Rect GetCamera()
 	{
