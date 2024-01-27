@@ -1,14 +1,14 @@
 #pragma once
 #include "Player.h"
-
+#include "FontRendering.h"
 class GolfClub;
 
 class PlayerUI
 {
 public:
 	//initialiser list determine from the player calss
-	PlayerUI(SDL_Renderer* r, SDL_Rect* camera, const int& screenW, const int& screenH, int* playerStamina, int* swings)
-		: UI_renderer(r), camera(camera), UI_screenWidth(screenW), UI_screenHeight(screenH), UI_staminaFillPercentage(playerStamina), UI_swings(swings)
+	PlayerUI(SDL_Renderer* r, SDL_Rect* camera, const int& screenW, const int& screenH, int* playerStamina)
+		: UI_renderer(r), camera(camera), UI_screenWidth(screenW), UI_screenHeight(screenH), UI_staminaFillPercentage(playerStamina)
 	{
 		init();
 	}

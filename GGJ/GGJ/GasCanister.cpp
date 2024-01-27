@@ -26,19 +26,30 @@ bool GasCanister::CreateTexture()
 void GasCanister::Render()
 {
 	OffsetObjectPositionUsingCameraPos();
-	SDL_Point center{ this->destRect.x / 2, this->destRect.y / 2 };
+	SDL_Point center{ this->destRect.x, this->destRect.y
+};
 
-	SDL_RenderCopyEx(this->renderer, this->texture, NULL, &this->drawRect, -90, &center, SDL_FLIP_NONE);
+	SDL_RenderCopy(this->renderer, this->texture, NULL, &this->drawRect);
 }
 
 void GasCanister::OffsetObjectPositionUsingCameraPos()
 {
-	this->drawRect = { this->destRect.x - this->camera->x, this->destRect.y - this->camera->y, this->destRect.w, this->destRect.h };
+	this->drawRect = { this->destRect.x, this->destRect.y, this->destRect.w, this->destRect.h };
 };
 
 void GasCanister::Update()
 {
 
+}
+
+void GasCanister::setIsFull(bool value)
+{
+	this->isFull = value;
+}
+
+bool GasCanister::getIsFull()
+{
+	return this->isFull;
 }
 
 SDL_Rect GasCanister::GetCanisterRect()

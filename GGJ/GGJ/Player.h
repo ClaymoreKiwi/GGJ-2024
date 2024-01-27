@@ -30,12 +30,14 @@ public:
 	void directionalMovement();
 
 	void Update();
+	void AahhhhThatsBetter();
+	void DecreaseSanity();
 	//called once per frame
 	void draw();
 	//used for isolating the UI elements from other draw calls
 	void drawUI();
 	//player collision
-	bool checkCollision(SDL_Rect other);
+	bool checkCollision(SDL_Rect other, GasCanister* canister);
 	//garbage collection
 	void clean();
 
@@ -57,7 +59,7 @@ private:
 	SDL_Rect	  p_positionSrc = { 0,0,0,0 }; //source rect for the player
 	SDL_Rect	  p_previousPos = { 0,0,0,0 };
 
-	float insanityAmount;
+	float insanityAmount = 100;
 
 	std::vector<GasCanister*>* gasCanisters;
 	//int variables

@@ -8,16 +8,20 @@ Gameloop::Gameloop(SDL_Renderer* r, const int windowWidth, const int windowHeigh
 
 int Gameloop::init()
 {
-    CameraC = new CameraC();
+    //CameraC = new CameraC();
     Time = new deltaTime();
     //create a new player
-    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 200, 200));
-    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 300, 200));
+    MakeCanisters();
     player = new Player(this->g_renderer, windowWidth, windowHeight, &camera, Time, &this->gasCanisters);
     //create tiled map - (this will be moved in the future to cater for map changing)
     g_tiledMap = std::shared_ptr<TileMap>(new TileMap(g_renderer, LoadMap(MapOne), player, windowWidth, windowHeight));
 
     return 0;
+}
+void Gameloop::MakeCanisters()
+{
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 200, 40));
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 500, 200));
 }
 //function to map select at a later date
 std::string Gameloop::LoadMap(const int mapNum)
@@ -60,9 +64,6 @@ bool Gameloop::processInput()
 
 void Gameloop::CameraUpdate()
 {
-    std::cerr << "cam X: " << camera.x << std::endl;
-    std::cerr << "cam y: " << camera.y << std::endl;
-    //update based on player collision event
 }
 
 void Gameloop::update()
