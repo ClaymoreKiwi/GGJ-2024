@@ -102,6 +102,7 @@ void Player::Update()
 	switch (terrainCheck)
 	{
 	case Wall:
+
 		//update movement bool
 		break;
 	case Door:
@@ -151,9 +152,7 @@ void Player::Update()
 				p_camera->UpdateCamera(0, -600);
 				DoorTransition = true;
 				break;
-			}
-
-			
+			}			
 		}
 		//update camera
 		break;

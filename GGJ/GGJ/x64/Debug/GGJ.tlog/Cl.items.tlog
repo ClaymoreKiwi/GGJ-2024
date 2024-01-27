@@ -1,6 +1,8 @@
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\Button.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\Button.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\Camera.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\Camera.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\deltaTime.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\deltaTime.obj
+C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\enemy.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\enemy.obj
+C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\EnemypathFinding.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\EnemypathFinding.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\FontRendering.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\FontRendering.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\Gameloop.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\Gameloop.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\GasCanister.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\GasCanister.obj
@@ -8,6 +10,7 @@ C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\I_Observer.cpp;C:\Users\tingl\O
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\Main.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\Main.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\MainMenu.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\MainMenu.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\Player.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\Player.obj
+C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\PlayerUI.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\PlayerUI.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\StateMachine.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\StateMachine.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\Subject.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\Subject.obj
 C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\TileMap.cpp;C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\GGJ\x64\Debug\TileMap.obj

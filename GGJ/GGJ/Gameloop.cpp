@@ -13,8 +13,8 @@ int Gameloop::init()
     g_textureCRT = SDL_CreateTextureFromSurface(g_renderer, image);
     SDL_FreeSurface(image);
 
-    CameraC = new Camera(camera);
     Time = new deltaTime();
+    CameraC = new Camera(camera);
     //create a new player
     this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 200, 200));
     this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 300, 200));

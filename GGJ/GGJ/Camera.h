@@ -1,6 +1,13 @@
 #pragma once
 #include <iostream>
 #include <SDL.h>
+#include <cmath>
+
+template <typename T>
+inline T lerp(const T& a, const T& b, float t)
+{
+	return a + t * (b - a);
+}
 
 class Camera
 {
