@@ -1,2 +1,8 @@
-﻿  MainMenu.cpp
+﻿  Player.cpp
+C:\Users\tingl\Desktop\GGJ\GGJ-2024\GGJ\GGJ\Player.cpp(156,3): warning C4150: deletion of pointer to incomplete type 'PlayerUI'; no destructor called
+  C:\Users\tingl\Desktop\GGJ\GGJ-2024\GGJ\GGJ\Player.h(10,7):
+  see declaration of 'PlayerUI'
+  
+  TileMap.cpp
+  Generating Code...
   GGJ.vcxproj -> C:\Users\tingl\Desktop\GGJ\GGJ-2024\GGJ\x64\Debug\GGJ.exe
