@@ -16,13 +16,17 @@ int Gameloop::init()
     Time = new deltaTime();
     CameraC = new Camera(camera);
     //create a new player
-    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 200, 200));
-    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 300, 200));
+    MakeCanisters();
     player = new Player(this->g_renderer, windowWidth, windowHeight, CameraC, Time, &this->gasCanisters);
     //create tiled map - (this will be moved in the future to cater for map changing)
     g_tiledMap = std::shared_ptr<TileMap>(new TileMap(g_renderer, LoadMap(MapOne), player, windowWidth, windowHeight));
 
     return 0;
+}
+void Gameloop::MakeCanisters()
+{
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 200, 40));
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, 500, 200));
 }
 //function to map select at a later date
 std::string Gameloop::LoadMap(const int mapNum)
