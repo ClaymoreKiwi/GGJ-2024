@@ -31,7 +31,8 @@ void Player::init()
 	//free the surface once the image is on screen
 	SDL_FreeSurface(p_surface);
 
-	//playerUI = new PlayerUI(this->p_renderer, p_camera, screenWidth, screenHeight, &stamina)
+	playerUI = new PlayerUI(this->p_renderer, p_camera, screenWidth, screenHeight, &stamina);
+	this->audioPlayer = new AudioPlayer();
 }
 
 void Player::processInput(SDL_Event e)
@@ -164,9 +165,23 @@ void Player::Update()
 	}
 
 	for (GasCanister* canister : *this->gasCanisters) {
-		if (this->checkCollision(canister->GetCanisterRect()))
-			std::cout << "canister collision detected" << std::endl;;
+		if (this->checkCollision(canister->GetCanisterRect(), canister))
+			AahhhhThatsBetter();
 	}
+
+	DecreaseSanity();
+}
+
+
+void Player::AahhhhThatsBetter()
+{
+	this->insanityAmount = this->insanityAmount + 50 > 100 ? 100 : this->insanityAmount + 50;
+	std::cout << "canister collected" << std::endl;
+}
+void Player::DecreaseSanity()
+{
+	this->insanityAmount -= 1;
+	std::cout << this->insanityAmount << std::endl;
 }
 
 
@@ -182,9 +197,16 @@ void Player::drawUI()
 {
 }
 
-bool Player::checkCollision(SDL_Rect other)
+bool Player::checkCollision(SDL_Rect other, GasCanister* canister)
 {
-	return SDL_HasIntersection(&this->p_positionDest, &other);
+	
+	if (SDL_HasIntersection(&this->p_positionDest, &other) && canister->getIsFull()) {
+		canister->setIsFull(false);
+		this->audioPlayer->PlaySound(AudioPlayer::inhale);
+		return true;
+	}
+
+	return false;
 }
 
 
