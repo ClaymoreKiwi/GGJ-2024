@@ -30,11 +30,6 @@ private:
 public:
 	enum Sounds 
 	{
-		button_hover_sound,
-		button_select_sound,
-		swing_club,
-		score_ball,
-		ball_hit,
-		TOTAL_sounds,
+		inhale
 	};
 };

@@ -32,6 +32,7 @@ void Player::init()
 	SDL_FreeSurface(p_surface);
 
 	playerUI = new PlayerUI(this->p_renderer, p_camera, screenWidth, screenHeight, &stamina);
+	this->audioPlayer = new AudioPlayer();
 }
 
 void Player::processInput(SDL_Event e)
@@ -150,6 +151,7 @@ bool Player::checkCollision(SDL_Rect other, GasCanister* canister)
 	
 	if (SDL_HasIntersection(&this->p_positionDest, &other) && canister->getIsFull()) {
 		canister->setIsFull(false);
+		this->audioPlayer->PlaySound(AudioPlayer::inhale);
 		return true;
 	}
 

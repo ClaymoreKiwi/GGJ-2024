@@ -4,6 +4,7 @@
 #include "Gameloop.h"
 #include "GasCanister.h"
 #include <vector>
+#include "AudioPlayer.h"
 
 //class refrences
 class GolfClub;
@@ -58,6 +59,7 @@ private:
 	deltaTime* Time = nullptr;
 	SDL_Rect	  p_positionSrc = { 0,0,0,0 }; //source rect for the player
 	SDL_Rect	  p_previousPos = { 0,0,0,0 };
+	AudioPlayer* audioPlayer;
 
 	float insanityAmount = 100;
 
