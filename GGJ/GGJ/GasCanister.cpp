@@ -32,7 +32,7 @@ void GasCanister::Render()
 void GasCanister::OffsetObjectPositionUsingCameraPos()
 {
 	this->drawRect = { this->destRect.x - this->camera->x, this->destRect.y - this->camera->y, this->destRect.w, this->destRect.h };
-}
+};
 
 void GasCanister::Update()
 {
