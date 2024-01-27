@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <SDL_image.h>
+#include "MainMenu.h"
 #include "Gameloop.h"
 
 class StateMachine
@@ -21,7 +22,7 @@ private:
 		Exit = 5
 	};
 
-	int state = GamePlay;
+	int state = Menu;
 
 	SDL_Window*		_window = nullptr;
 	SDL_Renderer*	_renderer = nullptr;
