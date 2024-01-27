@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "PlayerUI.h"
 
 void Player::init()
 {
@@ -29,6 +30,8 @@ void Player::init()
 
 	//free the surface once the image is on screen
 	SDL_FreeSurface(p_surface);
+
+	playerUI = new PlayerUI(this->p_renderer, p_camera, screenWidth, screenHeight, &stamina, &swings)
 }
 
 void Player::processInput(SDL_Event e)
@@ -122,6 +125,11 @@ void Player::Update()
 		p_previousPos.w = p_positionDest.w;
 		p_previousPos.h = p_positionDest.h;
 	}
+
+	for (GasCanister* canister : *this->gasCanisters) {
+		if (this->checkCollision(canister->GetCanisterRect()))
+			std::cout << "canister collision detected" << std::endl;;
+	}
 }
 
 void Player::swingClub(const int& mouseX, const int& mouseY)
@@ -140,9 +148,9 @@ void Player::drawUI()
 {
 }
 
-bool Player::checkCollision(SDL_Rect* other)
+bool Player::checkCollision(SDL_Rect other)
 {
-	return false;
+	return SDL_HasIntersection(&this->p_positionDest, &other);
 }
 
 
