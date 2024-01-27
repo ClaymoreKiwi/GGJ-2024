@@ -2,6 +2,8 @@
 #include <iostream>
 #include <memory>
 #include "Gameloop.h"
+#include "GasCanister.h"
+#include <vector>
 
 //class refrences
 class GolfClub;
@@ -14,8 +16,8 @@ class Player
 {
 public:
 	//player constructor and initalised variables
-	Player(SDL_Renderer* r, const int& screenW, const int& screenH, SDL_Rect* camera, deltaTime* Time)
-		:p_renderer(r), screenWidth(screenW), screenHeight(screenH), p_camera(camera), Time(Time)
+	Player(SDL_Renderer* r, const int& screenW, const int& screenH, SDL_Rect* camera, deltaTime* Time, std::vector<GasCanister*>* canisters)
+		:p_renderer(r), screenWidth(screenW), screenHeight(screenH), p_camera(camera), Time(Time), gasCanisters(canisters)
 	{
 		init();
 	}
@@ -33,7 +35,7 @@ public:
 	//used for isolating the UI elements from other draw calls
 	void drawUI();
 	//player collision
-	bool checkCollision(SDL_Rect* other);
+	bool checkCollision(SDL_Rect other);
 	//garbage collection
 	void clean();
 
@@ -55,6 +57,9 @@ private:
 	SDL_Rect	  p_positionSrc = { 0,0,0,0 }; //source rect for the player
 	SDL_Rect	  p_previousPos = { 0,0,0,0 };
 
+	float insanityAmount;
+
+	std::vector<GasCanister*>* gasCanisters;
 	//int variables
 	//34px * 52px - fixed variables for the sprite sheet accuracy
 	const int playerWidth = 34,
