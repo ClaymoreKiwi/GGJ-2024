@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AudioPlayer.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="deltaTime.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Gameloop.cpp" />
     <ClCompile Include="GasCanister.cpp" />
     <ClCompile Include="I_Observer.cpp" />
+    <ClCompile Include="LoseScreen.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -153,8 +155,10 @@
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Subject.cpp" />
     <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="WinScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioPlayer.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="deltaTime.h" />
@@ -164,12 +168,14 @@
     <ClInclude Include="Gameloop.h" />
     <ClInclude Include="GasCanister.h" />
     <ClInclude Include="I_Observer.h" />
+    <ClInclude Include="LoseScreen.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerUI.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Subject.h" />
     <ClInclude Include="TileMap.h" />
+    <ClInclude Include="WinScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

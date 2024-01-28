@@ -27,11 +27,11 @@ public:
 		if (cam_camera.y < 0)
 			cam_camera.y = 0;
 		//stop camera from going too far right
-		if (cam_camera.x > ((1000 / 10) * 40) - 1000)
-			cam_camera.x = ((1000 / 10) * 40) - 1000;
+		if (cam_camera.x > ((1000 / 10) * 80) - 1000)
+			cam_camera.x = ((1000 / 10) * 80) - 1000;
 		//stop camera from going too far down
-		if (cam_camera.y > ((600 / 10) * 20) - 600)
-			cam_camera.y = ((600 / 10) * 20) - 600;
+		if (cam_camera.y > ((600 / 10) * 40) - 600)
+			cam_camera.y = ((600 / 10) * 40) - 600;
 	};
 	SDL_Rect& GetCamera()
 	{

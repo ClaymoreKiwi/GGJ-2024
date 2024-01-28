@@ -86,14 +86,38 @@ void StateMachine::updateState()
 		case Lose:
 		{
 		#pragma region LoseGame loop
-			//game over loop goes here
+			LoseScreen* loseScreen = new LoseScreen(this->_renderer, _windowWidth, _windowHeight);
+			if (loseScreen->init() < 0)
+				loseScreen->LoseScreenRunning();
+			//menu loop
+			while (loseScreen->LoseScreenRunning())
+			{
+				//run all updates
+				loseScreen->update();
+			}
+			state = loseScreen->LoseScreenStateUpdate();
+			//destroy menu
+			delete loseScreen;
+			loseScreen = nullptr;
 		#pragma endregion
 		}
 		break;
 		case Win:
 		{
 		#pragma region WinGame loop
-			//win loop goes here
+			WinScreen* winScreen = new WinScreen(this->_renderer, _windowWidth, _windowHeight);
+			if (winScreen->init() < 0)
+				winScreen->WinScreenRunning();
+			//menu loop
+			while (winScreen->WinScreenRunning())
+			{
+				//run all updates
+				winScreen->update();
+			}
+			state = winScreen->WinScreenStateUpdate();
+			//destroy menu
+			delete winScreen;
+			winScreen = nullptr;
 		#pragma endregion
 		}
 		break;

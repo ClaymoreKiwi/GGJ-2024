@@ -9,6 +9,8 @@
 
 class Player;
 class GasCanister;
+class Enemy;
+
 class Gameloop
 {
 public:
@@ -41,6 +43,7 @@ private:
 	deltaTime* Time = nullptr;
 	std::shared_ptr<TileMap> g_tiledMap;
 
+	std::vector<Enemy*> enemyList;
 	//for the window width and height to be accessed elsewhere
 	const int windowWidth,
 		windowHeight;

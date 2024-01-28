@@ -29,21 +29,20 @@ bool GasCanister::CreateTexture()
 void GasCanister::Render()
 {
 	OffsetObjectPositionUsingCameraPos();
-	SDL_Point center{ this->destRect.x, this->destRect.y
-};
+	SDL_Point center{ this->destRect.x, this->destRect.y };
 
 	SDL_RenderCopy(this->renderer, this->texture, NULL, &this->drawRect);
 }
 
 void GasCanister::OffsetObjectPositionUsingCameraPos()
 {
-	this->drawRect = { this->destRect.x, this->destRect.y, this->destRect.w, this->destRect.h };
+	this->drawRect = { this->destRect.x - camera->GetCamera().x, this->destRect.y - camera->GetCamera().y, this->destRect.w, this->destRect.h};
 };
 
 void GasCanister::Update()
 {
-	float distanceToPlayerX = this->player->p_positionDest.x - this->destRect.x;
-	float distanceToPlayerY = this->player->p_positionDest.y - this->destRect.y;
+	float distanceToPlayerX = static_cast<float>(this->player->p_positionDest.x - this->destRect.x);
+	float distanceToPlayerY = static_cast<float>(this->player->p_positionDest.y - this->destRect.y);
 
 	float distanceSquared = (distanceToPlayerX * distanceToPlayerX) + (distanceToPlayerY * distanceToPlayerY);
 
