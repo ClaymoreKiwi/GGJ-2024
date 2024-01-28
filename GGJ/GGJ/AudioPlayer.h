@@ -21,7 +21,7 @@ public:
 		Mix_CloseAudio();
 	}
 
-	void PlaySound(int sound, int audioChannel, int looping);
+	int PlaySound(int sound, int audioChannel, int looping);
 	void TrackSelect(const char* path);
 	void Stop(int channel);
 	void SetVolume(int channel, float volume);
@@ -34,6 +34,10 @@ public:
 	enum Sounds 
 	{
 		inhale,
-		hiss
+		hiss,
+		laugh,
+		exit,
+		roomChange,
+		footstep
 	};
 };
