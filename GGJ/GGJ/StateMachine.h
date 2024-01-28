@@ -24,7 +24,7 @@ private:
 		Exit = 5
 	};
 
-	int state = GamePlay;
+	int state = Menu;
 
 	SDL_Window*		_window = nullptr;
 	SDL_Renderer*	_renderer = nullptr;

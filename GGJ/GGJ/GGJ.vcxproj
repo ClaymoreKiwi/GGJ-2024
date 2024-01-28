@@ -147,6 +147,7 @@
     <ClCompile Include="Gameloop.cpp" />
     <ClCompile Include="GasCanister.cpp" />
     <ClCompile Include="I_Observer.cpp" />
+    <ClCompile Include="LaughterAtExit.cpp" />
     <ClCompile Include="LoseScreen.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Gameloop.h" />
     <ClInclude Include="GasCanister.h" />
     <ClInclude Include="I_Observer.h" />
+    <ClInclude Include="LaughterAtExit.h" />
     <ClInclude Include="LoseScreen.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Player.h" />

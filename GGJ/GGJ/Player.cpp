@@ -113,14 +113,22 @@ void Player::directionalMovement()
 
 void Player::Update()
 {
+	if (canMove)
+	{
+		p_previousPos.x = p_positionDest.x;
+		p_previousPos.y = p_positionDest.y;
+		p_previousPos.w = p_positionDest.w;
+		p_previousPos.h = p_positionDest.h;
+	}
 
 	switch (terrainCheck)
 	{
 	case Wall:
-
+		p_positionDest = p_previousPos;
 		//update movement bool
 		break;
 	case Door:
+		canMove = true;
 		if (!DoorTransition)
 		{
 			int distRight = screenWidth - p_drawRect.x;
@@ -176,9 +184,11 @@ void Player::Update()
 		//update camera
 		break;
 	case Exit:
-		
+		canMove = true;
+		HasWon = true;
 		break;
 	default:
+		canMove = true;
 		DoorTransition = false;
 		//no special implementation
 		break;

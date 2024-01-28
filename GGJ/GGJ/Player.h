@@ -90,6 +90,8 @@ public:
 		movingRight = false,
 		usingStamina = false,
 		enemyIntersect = false,
+		canMove = true,
+		HasWon = false,
 		DoorTransition = false;
 
 	SDL_Rect p_positionDest = { 0,0,0,0 }; //destination of the player sprite on the screen
