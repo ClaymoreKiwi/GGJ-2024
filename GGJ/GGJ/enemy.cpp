@@ -26,7 +26,7 @@ void Enemy::init()
 
 	// Define distributions for the two random variables
 	std::uniform_int_distribution<int> distribution1(800, ((screenWidth / 10) * mapWidth));
-	std::uniform_int_distribution<int> distribution2(400, ((screenHeight / 10) * mapHeight) - 400);
+	std::uniform_int_distribution<int> distribution2(400, ((screenHeight / 10) * mapHeight));
 
 	// Generate two random numbers
 	int randomXPos = distribution1(gen1);
@@ -80,7 +80,7 @@ void Enemy::update()
 
 void Enemy::draw()
 {
-	e_drawDest = { e_positionDest.x - e_camera->x, e_positionDest.y - e_camera->y, e_positionDest.w, e_positionDest.h };
+	e_drawDest = { e_positionDest.x - e_camera->GetCamera().x, e_positionDest.y - e_camera->GetCamera().y, e_positionDest.w, e_positionDest.h};
 	if (e_knockedOut)
 	{
 		e_positionSrc.x = 115;
@@ -103,8 +103,8 @@ void Enemy::draw()
 	SDL_RenderCopy(this->e_renderer, this->e_texture, &e_positionSrc, &e_drawDest);
 
 	if (path.size() > 1) {
-		*enemyX = path[1].x * 80;
-		*enemyY = path[1].y * 80;
+		*enemyX = path[1].x * 66;
+		*enemyY = path[1].y * 60;
 
 		path.erase(path.begin());
 	}
@@ -112,10 +112,10 @@ void Enemy::draw()
 
 void Enemy::AStarUpdate(SDL_Rect PlayerPos, SDL_Rect EnemyPos)
 {
-	moveToX = PlayerPos.x / 80;
-	moveToY = PlayerPos.y / 80;
-	*enemyX = (EnemyPos.x) / 80;
-	*enemyY = (EnemyPos.y) / 80;
+	moveToX = PlayerPos.x / 66;
+	moveToY = PlayerPos.y / 60;
+	*enemyX = (EnemyPos.x) / 66;
+	*enemyY = (EnemyPos.y) / 60;
 
 	// Ensure enemyX and enemyY are within valid range
 	*enemyX = std::max(0, std::min(*enemyX, mapWidth -1));
@@ -137,7 +137,7 @@ bool Enemy::CheckCollisionPlayer(SDL_Rect* other)
 {
 	if (!e_knockedOut)
 	{
-		SDL_Rect check = { other->x - e_camera->x, other->y - e_camera->y, other->w, other->h };
+		SDL_Rect check = { other->x - e_camera->GetCamera().x, other->y - e_camera->GetCamera().y, other->w, other->h };
 		if (SDL_HasIntersection(&check, &e_drawDest))
 		{
 			isInCollision = true;

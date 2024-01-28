@@ -1,5 +1,6 @@
 #pragma once
 #include "Gameloop.h"
+#include "Camera.h"
 #include <memory>
 #include "EnemypathFinding.h"
 
@@ -10,7 +11,7 @@ class Enemy
 {
 public:
 	//player constructor and initalised variables
-	Enemy(SDL_Renderer* r, const int& screenW, const int& screenH, SDL_Rect* camera, Player* player, int rand, deltaTime* Time, std::shared_ptr<TileMap> tilemap)
+	Enemy(SDL_Renderer* r, const int& screenW, const int& screenH, Camera* camera, Player* player, int rand, deltaTime* Time, std::shared_ptr<TileMap> tilemap)
 		:e_renderer(r), screenWidth(screenW), screenHeight(screenH), e_camera(camera), player(player), i(rand), Time(Time), e_tileMap(tilemap)
 	{
 		init();
@@ -42,7 +43,7 @@ private:
 	SDL_Texture*  e_texture = nullptr; //players sprite
 	SDL_Renderer* e_renderer = nullptr; //rendering capable from this class
 	SDL_Surface*  e_surface = nullptr; // surface to brin ghte image in and add it as a texture to the rect
-	SDL_Rect*	  e_camera = nullptr; //camera refrence from gameloop
+	Camera*	  e_camera = nullptr; //camera refrence from gameloop
 	SDL_Rect	  e_positionDest = { 0,0,0,0 }; //destination on that source to be 
 	SDL_Rect	  e_positionSrc = { 0,0,0,0 }; //source rect for the projectile
 	SDL_Rect	  e_drawDest = { 0,0,0,0 };

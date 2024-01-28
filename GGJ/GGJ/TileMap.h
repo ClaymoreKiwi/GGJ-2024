@@ -7,7 +7,7 @@
 #include "Camera.h"
 
 class Player;
-const int mapWidth = 40, mapHeight = 20;
+const int mapWidth = 80, mapHeight = 40;
 struct Circle_Col
 {
 	int x, y;
@@ -54,5 +54,6 @@ enum terrain
 {
 	Door = 1,
 	Wall = 2,
+	Exit = 3,
 };
 

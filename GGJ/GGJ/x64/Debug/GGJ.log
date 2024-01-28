@@ -1,2 +1,8 @@
-﻿  enemy.cpp
-  GGJ.vcxproj -> C:\Users\tingl\OneDrive\Desktop\GGJ-2024\GGJ\x64\Debug\GGJ.exe
+﻿  Gameloop.cpp
+  LoseScreen.cpp
+  Main.cpp
+  MainMenu.cpp
+  StateMachine.cpp
+  WinScreen.cpp
+  Generating Code...
+  GGJ.vcxproj -> C:\Users\tingl\Desktop\GGJ\GGJ-2024\GGJ\x64\Debug\GGJ.exe
