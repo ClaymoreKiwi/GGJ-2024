@@ -17,7 +17,7 @@ class LaughterAtExit;
 class Gameloop
 {
 public:
-	Gameloop(SDL_Renderer*, const int, const int);
+	Gameloop(SDL_Renderer*, const int, const int);;
 	int init();
 	void MakeCanisters();
 	void GiveCanistersPlayerRef(Player* player);
