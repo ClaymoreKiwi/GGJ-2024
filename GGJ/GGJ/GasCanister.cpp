@@ -6,7 +6,7 @@ void GasCanister::init()
 	if (!textureCreatedSucessfully)
 		return;
 	this->audioPlayer = new AudioPlayer();
-	this->audioPlayer->PlaySound(AudioPlayer::hiss, this->audioChannel, -1);
+	//this->audioPlayer->PlaySound(AudioPlayer::hiss, this->audioChannel, -1);
 	this->audioPlayer->SetVolume(this->audioChannel, 10);
 }
 
@@ -45,9 +45,18 @@ void GasCanister::Update()
 	float distanceToPlayerY = static_cast<float>(this->player->p_positionDest.y - this->destRect.y);
 
 	float distanceSquared = (distanceToPlayerX * distanceToPlayerX) + (distanceToPlayerY * distanceToPlayerY);
+	float distance = std::sqrt(distanceSquared);
 
-	this->audioPlayer->SetVolume(this->audioChannel, 1 / (distanceSquared / 1000000));
-	//std::cout << 1 / (distanceSquared / 1000000) << std::endl;
+	float finalVolume = 100 / distance * 100;
+	if (finalVolume > 128) {
+		finalVolume = 128;
+	}
+
+	if (finalVolume < 10)
+		finalVolume = 0;
+
+	this->audioPlayer->SetVolume(this->audioChannel, finalVolume);
+	std::cout << finalVolume << std::endl;
 }
 
 void GasCanister::setIsFull(bool value)

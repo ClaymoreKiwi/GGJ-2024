@@ -29,6 +29,29 @@ public:
 		this->audioPlayer = new AudioPlayer();
 	};
 
+	~GasCanister() {
+		if (player != NULL)
+		{
+			//clear player from memory and set to NULL
+			delete player;
+			player = nullptr;
+		}
+
+		if (this->camera != NULL)
+		{
+			//clear player from memory and set to NULL
+			delete camera;
+			camera = nullptr;
+		}
+
+		if (this->audioPlayer != NULL)
+		{
+			//clear player from memory and set to NULL
+			delete audioPlayer;
+			audioPlayer = nullptr;
+		}
+	}
+
 	void init();
 	bool CreateTexture();
 	void Render();

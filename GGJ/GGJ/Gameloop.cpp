@@ -164,6 +164,20 @@ void Gameloop::clean()
         enemy = nullptr;
     }
     enemyList.clear();
+
+
+    delete this->laughter;
+
+    for (auto& canister : gasCanisters)
+    {
+        delete canister;
+        canister = nullptr;
+    }
+    gasCanisters.clear();
+
+    SDL_DestroyTexture(g_textureCRT);
+
+
 }
 
 bool Gameloop::gameRunning()
