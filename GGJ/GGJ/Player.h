@@ -63,6 +63,11 @@ private:
 
 	float insanityAmount = 100;
 	bool insane = false;
+	bool ReadyToStartMoving = true;
+
+	int footstepChannel;
+
+	int canistersCollected = 0;
 
 	std::vector<GasCanister*>* gasCanisters;
 	//int variables
