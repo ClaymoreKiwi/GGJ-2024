@@ -6,9 +6,12 @@
 #include "deltaTime.h"
 #include "TileMap.h"
 #include "Camera.h"
+#include "LaughterAtExit.h"
+
 
 class Player;
 class GasCanister;
+class LaughterAtExit;
 class Gameloop
 {
 public:
@@ -34,6 +37,8 @@ private:
 	SDL_Renderer* g_renderer = nullptr;
 	SDL_Texture* g_textureCRT = nullptr;
 	Player* player = nullptr;
+
+	LaughterAtExit* laughter = nullptr;
 
 	//dont worry about this camera 
 	Camera* CameraC = nullptr;

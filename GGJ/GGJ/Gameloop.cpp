@@ -23,6 +23,9 @@ int Gameloop::init()
     //create tiled map - (this will be moved in the future to cater for map changing)
     g_tiledMap = std::shared_ptr<TileMap>(new TileMap(g_renderer, LoadMap(MapOne), player, windowWidth, windowHeight));
 
+    this->laughter = new LaughterAtExit(this->g_renderer, windowWidth, windowHeight, CameraC, Time, 300, 300, -1);
+    this->laughter->setPlayerRef(player);
+
     return 0;
 }
 void Gameloop::MakeCanisters()
@@ -87,6 +90,7 @@ void Gameloop::update()
     for (GasCanister* canister : this->gasCanisters) {
         canister->Update();
     }
+    this->laughter->Update();
     //(other class updates go here)
 }
 
@@ -102,6 +106,7 @@ void Gameloop::draw()
     }
     player->draw();
     SDL_RenderCopy(this->g_renderer, this->g_textureCRT, NULL, NULL);
+    this->laughter->Render();
     //render the new frames that happened since the last call
     SDL_RenderPresent(g_renderer);
 }

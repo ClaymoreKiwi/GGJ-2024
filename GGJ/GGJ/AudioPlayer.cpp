@@ -12,6 +12,14 @@ AudioPlayer::AudioPlayer()
 	soundFiles.push_back(sound);
 	Mix_Chunk* sound1 = Mix_LoadWAV("./content/sounds/HissingGas.wav");
 	soundFiles.push_back(sound1);
+	Mix_Chunk* sound2 = Mix_LoadWAV("./content/sounds/L6.wav");
+	soundFiles.push_back(sound2);
+	Mix_Chunk* sound3 = Mix_LoadWAV("./content/sounds/Exit.wav");
+	soundFiles.push_back(sound3);
+	Mix_Chunk* sound4 = Mix_LoadWAV("./content/sounds/ChannelChange.wav");
+	soundFiles.push_back(sound4);
+	Mix_Chunk* sound5 = Mix_LoadWAV("./content/sounds/Footstep.wav");
+	soundFiles.push_back(sound5);
 
 	//set the volume of the sound files
 	for (int i = 0; i < soundFiles.size(); ++i)
@@ -20,16 +28,15 @@ AudioPlayer::AudioPlayer()
 	}
 }
 
-void AudioPlayer::PlaySound(int sound, int audioChannel, int looping)
+int AudioPlayer::PlaySound(int sound, int audioChannel, int looping)
 {
 	int channelGroup = audioChannel;
 	if (sound == inhale) {
 		channelGroup = Mix_GroupAvailable(-1);
 		Mix_Volume(channelGroup, 50);
-		Mix_PlayChannel(channelGroup, soundFiles[sound], looping);
-		return;
+		return Mix_PlayChannel(channelGroup, soundFiles[sound], looping);
 	}
-	Mix_PlayChannel(audioChannel, soundFiles[sound], looping);
+	return Mix_PlayChannel(audioChannel, soundFiles[sound], looping);
 }
 
 void AudioPlayer::TrackSelect(const char* path)
