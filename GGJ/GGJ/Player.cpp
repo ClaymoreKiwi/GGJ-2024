@@ -34,6 +34,9 @@ void Player::init()
 
 	playerUI = new PlayerUI(this->p_renderer, &p_camera->GetCamera(), screenWidth, screenHeight, &stamina);
 	this->audioPlayer = new AudioPlayer();
+	int track = this->audioPlayer->PlaySound(AudioPlayer::laugh, -1, -1);
+	this->audioPlayer->SetVolume(track, 128);
+	this->audioPlayer->TrackSelect("./content/sounds/BackgroundSounds.wav");
 }
 
 void Player::processInput(SDL_Event e)
@@ -95,6 +98,11 @@ void Player::directionalMovement()
 		p_positionSrc.y = (playerHeight * 2) + 8;
 		p_positionDest.x += speed;
 	}
+
+	bool moving = movingDown || movingLeft || movingRight || movingUp;
+	if (moving) {
+		this->audioPlayer->PlaySound(AudioPlayer::footstep, -1, -1);
+	}
 }
 
 
@@ -141,18 +149,22 @@ void Player::Update()
 			case 'R':
 				p_camera->UpdateCamera(1000, 0);
 				DoorTransition = true;
+				this->audioPlayer->PlaySound(AudioPlayer::roomChange, -1, 0);
 				break;
 			case 'L':
 				p_camera->UpdateCamera(-1000, 0);
 				DoorTransition = true;
+				this->audioPlayer->PlaySound(AudioPlayer::roomChange, -1, 0);
 				break;
 			case 'D':
 				p_camera->UpdateCamera(0, 600);
 				DoorTransition = true;
+				this->audioPlayer->PlaySound(AudioPlayer::roomChange, -1, 0);
 				break;
 			case 'U':
 				p_camera->UpdateCamera(0, -600);
 				DoorTransition = true;
+				this->audioPlayer->PlaySound(AudioPlayer::roomChange, -1, 0);
 				break;
 			}			
 		}
