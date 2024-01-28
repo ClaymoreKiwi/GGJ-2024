@@ -30,7 +30,7 @@ int Gameloop::init()
         enemyList.push_back(new Enemy(this->g_renderer, windowWidth, windowHeight, CameraC, player, i, Time, g_tiledMap));
     }
 
-    this->laughter = new LaughterAtExit(this->g_renderer, windowWidth, windowHeight, CameraC, Time, 5280, 2400, -1);
+    this->laughter = new LaughterAtExit(this->g_renderer, windowWidth, windowHeight, CameraC, Time, 5280, 2400, 2);
     this->laughter->setPlayerRef(player);
 
     return 0;
@@ -40,7 +40,7 @@ void Gameloop::MakeCanisters()
     int xLocations[] = {1500, 400, 1500, 500 ,3800, 2200, 4550 };
     int yLocations[] = {2050, 400, 850, 1500 ,480, 1650, 900};
     for (int i = 0; i < 7; ++i) {
-    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, CameraC, Time, xLocations[i], yLocations[i], i));
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, CameraC, Time, xLocations[i], yLocations[i], 0));
     }
 }
 void Gameloop::GiveCanistersPlayerRef(Player* player)
