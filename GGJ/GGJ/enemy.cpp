@@ -140,10 +140,10 @@ bool Enemy::CheckCollisionPlayer(SDL_Rect* other)
 		SDL_Rect check = { other->x - e_camera->GetCamera().x, other->y - e_camera->GetCamera().y, other->w, other->h };
 		if (SDL_HasIntersection(&check, &e_drawDest))
 		{
-			isInCollision = true;
+			player->enemyIntersect = true;
 			return true;
 		}
-		isInCollision = false;
+		player->enemyIntersect = false;
 	}
 	return false;
 }

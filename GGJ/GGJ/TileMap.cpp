@@ -100,11 +100,12 @@ bool TileMap::CheckTileCollision(SDL_Rect tileRect, SDL_Rect* playerRect, const 
 
 	if (bottomPlayer <= topTile || topPlayer >= bottomTile || rightPlayer <= leftTile || leftPlayer >= rightTile)
 	{
-		return false;
+		return false;  // No collision
 	}
 	switch (tile)
 	{
 	case Wall:
+		player->canMove = false;
 		player->SetTerrainCheck(Wall);
 		return true;
 	case Door:
