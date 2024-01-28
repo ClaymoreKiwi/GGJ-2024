@@ -38,12 +38,6 @@ public:
 	bool getIsFull();
 	void setPlayerRef(Player* player);
 	~LaughterAtExit() {
-		if (player != NULL)
-		{
-			//clear player from memory and set to NULL
-			delete player;
-			player = nullptr;
-		}
 
 		if (this->camera != NULL)
 		{

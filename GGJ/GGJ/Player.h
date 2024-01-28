@@ -65,7 +65,7 @@ private:
 	bool insane = false;
 	bool ReadyToStartMoving = true;
 
-	int footstepChannel;
+	int footstepChannel = 20;
 
 	int canistersCollected = 0;
 

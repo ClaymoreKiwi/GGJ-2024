@@ -102,9 +102,9 @@ void Player::directionalMovement()
 	bool moving = movingDown || movingLeft || movingRight || movingUp;
 	if (moving == true && this->ReadyToStartMoving == true) {
 		this->ReadyToStartMoving = false;
-		this->footstepChannel = this->audioPlayer->PlaySound(AudioPlayer::footstep, -1, -1);
+		this->footstepChannel = this->audioPlayer->PlaySound(AudioPlayer::footstep, -1, 6);
 	}
-	else if (moving == false) {
+	else if (moving == false && this->ReadyToStartMoving == false) {
 		this->ReadyToStartMoving = true;
 		this->audioPlayer->Stop(footstepChannel);
 	}
