@@ -65,7 +65,7 @@ private:
 	bool insane = false;
 	bool ReadyToStartMoving = true;
 
-	int footstepChannel = 20;
+	int footstepChannel;
 
 	int canistersCollected = 0;
 
@@ -94,6 +94,6 @@ public:
 		HasWon = false,
 		DoorTransition = false;
 
-	SDL_Rect p_positionDest = { 0,0,0,0 };; //destination of the player sprite on the screen
+	SDL_Rect p_positionDest = { 0,0,0,0 }; //destination of the player sprite on the screen
 };
 

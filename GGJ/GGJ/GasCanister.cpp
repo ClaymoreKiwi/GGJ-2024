@@ -7,7 +7,7 @@ void GasCanister::init()
 		return;
 	this->audioPlayer = new AudioPlayer();
 	//this->audioPlayer->PlaySound(AudioPlayer::hiss, this->audioChannel, -1);
-	this->audioPlayer->SetVolume(this->audioChannel, 128);
+	this->audioPlayer->SetVolume(this->audioChannel, 10);
 }
 
 bool GasCanister::CreateTexture()

@@ -1,2 +1,17 @@
 ﻿  Gameloop.cpp
+  GasCanister.cpp
+  LaughterAtExit.cpp
+C:\Users\tingl\Desktop\GGJ\GGJ-2024\GGJ\GGJ\LaughterAtExit.cpp(45,26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\tingl\Desktop\GGJ\GGJ-2024\GGJ\GGJ\LaughterAtExit.cpp(46,26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\tingl\Desktop\GGJ\GGJ-2024\GGJ\GGJ\LaughterAtExit.cpp(51,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  LoseScreen.cpp
+  Main.cpp
+  MainMenu.cpp
+  Player.cpp
+  PlayerUI.cpp
+  StateMachine.cpp
+  TileMap.cpp
+  WinScreen.cpp
+  enemy.cpp
+  Generating Code...
   GGJ.vcxproj -> C:\Users\tingl\Desktop\GGJ\GGJ-2024\GGJ\x64\Debug\GGJ.exe

@@ -112,10 +112,10 @@ void Enemy::draw()
 
 void Enemy::AStarUpdate(SDL_Rect PlayerPos, SDL_Rect EnemyPos)
 {
-	moveToX = PlayerPos.x / 66;
-	moveToY = PlayerPos.y / 60;
-	*enemyX = (EnemyPos.x) / 66;
-	*enemyY = (EnemyPos.y) / 60;
+	moveToX = (PlayerPos.x + ((PlayerPos.w) / 2)) / 66;
+	moveToY = (PlayerPos.y + ((PlayerPos.h) / 2)) / 60;
+	*enemyX = (EnemyPos.x + ((EnemyPos.w) / 2)) / 66;
+	*enemyY = (EnemyPos.y + ((EnemyPos.h) / 2)) / 60;
 
 	// Ensure enemyX and enemyY are within valid range
 	*enemyX = std::max(0, std::min(*enemyX, mapWidth -1));

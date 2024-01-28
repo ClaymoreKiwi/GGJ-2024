@@ -102,9 +102,9 @@ void Player::directionalMovement()
 	bool moving = movingDown || movingLeft || movingRight || movingUp;
 	if (moving == true && this->ReadyToStartMoving == true) {
 		this->ReadyToStartMoving = false;
-		this->footstepChannel = this->audioPlayer->PlaySound(AudioPlayer::footstep, -1, 6);
+		this->footstepChannel = this->audioPlayer->PlaySound(AudioPlayer::footstep, -1, -1);
 	}
-	else if (moving == false && this->ReadyToStartMoving == false) {
+	else if (moving == false) {
 		this->ReadyToStartMoving = true;
 		this->audioPlayer->Stop(footstepChannel);
 	}
@@ -162,7 +162,7 @@ void Player::Update()
 			case 'R':
 				p_camera->UpdateCamera(1000, 0);
 				DoorTransition = true;
-				this->audioPlayer->PlaySound(AudioPlayer::roomChange, -1, 0);;
+				this->audioPlayer->PlaySound(AudioPlayer::roomChange, -1, 0);
 				break;
 			case 'L':
 				p_camera->UpdateCamera(-1000, 0);

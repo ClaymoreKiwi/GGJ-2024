@@ -15,6 +15,7 @@ int LoseScreen::init()
 	retry->init();
 	exitGame->init();
 
+	ls_audioPlayer->TrackSelect("./content/sounds/EndGame_lose.wav");
 	return 0;
 }
 
