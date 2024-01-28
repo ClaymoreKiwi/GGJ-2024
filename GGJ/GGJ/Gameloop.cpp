@@ -108,7 +108,7 @@ void Gameloop::update()
     }
     if (player->enemyIntersect)
     {
-        g_state = 2;
+        g_state = 2;;
     }
     for (GasCanister* canister : this->gasCanisters) {
         canister->Update();

@@ -162,7 +162,7 @@ void Player::Update()
 			case 'R':
 				p_camera->UpdateCamera(1000, 0);
 				DoorTransition = true;
-				this->audioPlayer->PlaySound(AudioPlayer::roomChange, -1, 0);
+				this->audioPlayer->PlaySound(AudioPlayer::roomChange, -1, 0);;
 				break;
 			case 'L':
 				p_camera->UpdateCamera(-1000, 0);
