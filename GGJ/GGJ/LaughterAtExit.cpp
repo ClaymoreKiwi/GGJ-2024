@@ -6,7 +6,7 @@ void LaughterAtExit::init()
 	if (!textureCreatedSucessfully)
 		return;
 	this->audioPlayer = new AudioPlayer();
-	this->audioPlayer->PlaySound(AudioPlayer::exit, this->audioChannel, -1);
+	int channel = this->audioPlayer->PlaySound(AudioPlayer::exit, this->audioChannel, -1);
 	this->audioPlayer->SetVolume(this->audioChannel, 128);
 }
 
