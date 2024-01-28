@@ -29,7 +29,7 @@ public:
 		this->audioPlayer = new AudioPlayer();
 	};
 
-	void init();
+	void init();;
 	bool CreateTexture();
 	void Render();
 	void OffsetObjectPositionUsingCameraPos();

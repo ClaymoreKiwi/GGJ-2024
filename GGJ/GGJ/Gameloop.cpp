@@ -10,7 +10,7 @@ Gameloop::Gameloop(SDL_Renderer* r, const int windowWidth, const int windowHeigh
 int Gameloop::init()
 {
     //crt effect
-    SDL_Surface* image = IMG_Load("content/background/CRT.png");
+    SDL_Surface* image = IMG_Load("content/background/CRT.png");;
     g_textureCRT = SDL_CreateTextureFromSurface(g_renderer, image);
     SDL_FreeSurface(image);
 

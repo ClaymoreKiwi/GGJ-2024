@@ -19,7 +19,7 @@ public:
 	Player(SDL_Renderer* r, const int& screenW, const int& screenH, Camera* camera, deltaTime* Time, std::vector<GasCanister*>* canisters)
 		:p_renderer(r), screenWidth(screenW), screenHeight(screenH), p_camera(camera), Time(Time), gasCanisters(canisters)
 	{
-		init();
+		init();;
 	}
 	//initialises the player created at the beginning of the program
 	void init();

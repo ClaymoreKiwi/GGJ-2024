@@ -28,7 +28,7 @@ public:
 	void clean();
 	~Gameloop()
 	{
-		clean();
+		clean();;
 	}
 
 private:

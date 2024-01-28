@@ -171,7 +171,7 @@ void Player::Update()
 		//update camera
 		break;
 	default:
-		DoorTransition = false;
+		DoorTransition = false;;
 		//no special implementation
 		break;
 	}
