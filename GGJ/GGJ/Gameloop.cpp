@@ -84,6 +84,7 @@ bool Gameloop::processInput()
             g_state = 5;
             return false;
         }
+    }
         if (g_state == 3)
         {
             return false;
@@ -92,7 +93,6 @@ bool Gameloop::processInput()
         {
             return false;
         }
-    }
         player->processInput(e);
         return true;
 }
@@ -164,16 +164,7 @@ void Gameloop::clean()
         enemy = nullptr;
     }
     enemyList.clear();
-
-
     delete this->laughter;
-
-    for (auto& canister : gasCanisters)
-    {
-        delete canister;
-        canister = nullptr;
-    }
-    gasCanisters.clear();
 
     SDL_DestroyTexture(g_textureCRT);
 
