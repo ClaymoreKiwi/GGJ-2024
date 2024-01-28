@@ -53,7 +53,6 @@ void LaughterAtExit::Update()
 		finalVolume = 128;
 	}
 	this->audioPlayer->SetVolume(this->audioChannel, finalVolume);
-	std::cout <<finalVolume << std::endl;
 }
 
 void LaughterAtExit::setIsFull(bool value)

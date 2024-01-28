@@ -100,8 +100,13 @@ void Player::directionalMovement()
 	}
 
 	bool moving = movingDown || movingLeft || movingRight || movingUp;
-	if (moving) {
-		this->audioPlayer->PlaySound(AudioPlayer::footstep, -1, -1);
+	if (moving == true && this->ReadyToStartMoving == true) {
+		this->ReadyToStartMoving = false;
+		this->footstepChannel = this->audioPlayer->PlaySound(AudioPlayer::footstep, -1, -1);
+	}
+	else if (moving == false) {
+		this->ReadyToStartMoving = true;
+		this->audioPlayer->Stop(footstepChannel);
 	}
 }
 
@@ -203,6 +208,7 @@ void Player::AahhhhThatsBetter()
 	this->insanityAmount = this->insanityAmount + 50 > 100 ? 100 : this->insanityAmount + 50;
 	if (insanityAmount > 75)
 		GoSaneAgain();
+	this->canistersCollected++;
 	std::cout << "canister collected" << std::endl;
 }
 void Player::GoSaneAgain()
