@@ -1,6 +1,7 @@
 #include "Gameloop.h"
 #include "StateMachine.h"
 #include "Player.h"
+#include "enemy.h"
 #include "GasCanister.h"
 
 Gameloop::Gameloop(SDL_Renderer* r, const int windowWidth, const int windowHeight)
@@ -23,6 +24,12 @@ int Gameloop::init()
     //create tiled map - (this will be moved in the future to cater for map changing)
     g_tiledMap = std::shared_ptr<TileMap>(new TileMap(g_renderer, LoadMap(MapOne), player, windowWidth, windowHeight));
 
+    for (int i = 1; i <= 2; ++i)
+    {
+        //add enemies to the list that is pre allocated
+        enemyList.push_back(new Enemy(this->g_renderer, windowWidth, windowHeight, CameraC, player, i, Time, g_tiledMap));
+    }
+
     this->laughter = new LaughterAtExit(this->g_renderer, windowWidth, windowHeight, CameraC, Time, 300, 300, -1);
     this->laughter->setPlayerRef(player);
 
@@ -33,7 +40,7 @@ void Gameloop::MakeCanisters()
     int xLocations[] = {800, 100,600};
     int yLocations[] = {550, 300, 300};
     for (int i = 0; i < 3; ++i) {
-    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, &camera, Time, xLocations[i], yLocations[i], i));
+    this->gasCanisters.push_back(new GasCanister(this->g_renderer, windowWidth, windowHeight, CameraC, Time, xLocations[i], yLocations[i], i));
     }
 }
 void Gameloop::GiveCanistersPlayerRef(Player* player)
@@ -90,6 +97,10 @@ void Gameloop::update()
     for (GasCanister* canister : this->gasCanisters) {
         canister->Update();
     }
+    for (auto& enemy : enemyList)
+    {
+        enemy->update();
+    }
     this->laughter->Update();
     //(other class updates go here)
 }
@@ -105,6 +116,10 @@ void Gameloop::draw()
         canister->Render();
     }
     player->draw();
+    for (auto& enemy : enemyList)
+    {
+        enemy->draw();
+    }
     SDL_RenderCopy(this->g_renderer, this->g_textureCRT, NULL, NULL);
     this->laughter->Render();
     //render the new frames that happened since the last call
@@ -126,6 +141,13 @@ void Gameloop::clean()
         delete Time;
         Time = nullptr;
     }
+    for (auto& enemy : enemyList)
+    {
+        enemy->clean();
+        delete enemy;
+        enemy = nullptr;
+    }
+    enemyList.clear();
 }
 
 bool Gameloop::gameRunning()

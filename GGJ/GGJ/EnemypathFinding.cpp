@@ -3,8 +3,8 @@
 #include <iostream>
 #include <fstream>
 
-int tileW = 80 * mapWidth;
-int tileH = 80 * mapHeight;
+int tileW = 66 * mapWidth;
+int tileH = 60 * mapHeight;
 
 // Returns if the position specified by x,y is
 // one where the player can move to, e.g. not wall
@@ -16,7 +16,7 @@ bool isValid(const TileMap& theMap, int x, int y)
 	if (y < 0 || y >= mapHeight) {
 		return false;
 	}
-	if (theMap[y][x] == 6) {
+	if (theMap[y][x] == 2) {
 		return false;
 	}
 	return true;

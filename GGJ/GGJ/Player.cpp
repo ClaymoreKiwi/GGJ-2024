@@ -170,6 +170,9 @@ void Player::Update()
 		}
 		//update camera
 		break;
+	case Exit:
+		
+		break;
 	default:
 		DoorTransition = false;
 		//no special implementation

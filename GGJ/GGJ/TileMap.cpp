@@ -110,6 +110,9 @@ bool TileMap::CheckTileCollision(SDL_Rect tileRect, SDL_Rect* playerRect, const 
 	case Door:
 		player->SetTerrainCheck(Door);
 		return true;
+	case Exit:
+		player->SetTerrainCheck(Exit);
+		return true;
 	default:
 		player->SetTerrainCheck(0);
 		// No special behavior for other tile types

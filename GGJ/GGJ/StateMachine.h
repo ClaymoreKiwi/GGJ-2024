@@ -4,6 +4,8 @@
 #include <SDL_image.h>
 #include "MainMenu.h"
 #include "Gameloop.h"
+#include "LoseScreen.h"
+#include "WinScreen.h"
 
 class StateMachine
 {

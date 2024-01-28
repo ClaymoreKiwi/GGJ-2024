@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include "Camera.h"
 #include "AudioPlayer.h"
 #include "Player.h"
 #include "./deltaTime.h"
@@ -10,7 +11,7 @@ class GasCanister
 {
 	SDL_Renderer* renderer = nullptr;
 	SDL_Texture* texture = nullptr;
-	SDL_Rect* camera = nullptr;
+	Camera* camera = nullptr;
 	deltaTime* time = nullptr;
 	SDL_Rect destRect = {200, 200, 25, 75};
 	SDL_Rect drawRect = { 0,0,0,0 };
@@ -20,7 +21,7 @@ class GasCanister
 	int audioChannel = -1;
 
 public:
-	GasCanister(SDL_Renderer* r, const int& screenW, const int& screenH, SDL_Rect* camera, deltaTime* Time, int posX, int posY, int audioChannel)
+	GasCanister(SDL_Renderer* r, const int& screenW, const int& screenH, Camera* camera, deltaTime* Time, int posX, int posY, int audioChannel)
 		:renderer(r), camera(camera), time(Time), audioChannel(audioChannel) {
 		this->init();
 		this->destRect.x = posX;
